@@ -1,16 +1,47 @@
 ---
-title: "R Notebook"
+title: "Introduction to R: Computer Programming for DNR Water Quality Professionals"
 output: html_notebook
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+# Outline
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+## Day 1, R syntax
 
-```{r}
-plot(cars)
-```
+1. Why R?
+2. What is a computer program?
+    - Elements of a program
+        * Input
+        * Output
+        * Math
+        * Conditional execution
+        * Repetition
+    - Natural vs. Formal language
+        * Natural language is spoken, ambiguous, and redundant
+        * Formal language is literal, unambiguous, and concise
+    - Interactive programming vs. Scripting
+    - RStudio tour
+    - Show how to type code into console
+    - Show how to create a script file and run a simple ```print()``` statement
+3. Exploring the ```data.frame```
+    - Open a tab-delimited file in Excel, explore data
+    - Read data in R
+        * Briefly introduce the variable, function, and argument components of the ```read.table()``` call
+        * Look at data in RStudio
+        * Each column has a data type show ```str()```--define data types
+        * Make a scatterplot
+4. Exercise
+    - Open the text file but try other arguments
+    - Plot the data using different plot arguments
+  
+## Day 2, Using R in your work
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+1. Database connections with SWIMS
+2. Exercise
+3. Statistical Modeling with R
+    - ANOVA
+    - Regression
+4. Exercise
+5. Packages
+6. GIS
+7. Exercise
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
