@@ -5,9 +5,28 @@ output: html_notebook
 
 # Outline
 
-## Day 1, R syntax
+## Day 1
 
-1. Why R?
+### Why learn R?
+
+Do you work on a computer? If so, it's likely you could benefit in some way by learning a programming language. Using a computer without programming skills is like:
+
+* advocating for water quality without understanding the science: you may be able to change the behavior of a few people with your persuasion alone, but you will be much more effective if you can properly communicate the implications of poor water quality, its causes, and the opportunities for restoration.
+* making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a years worth of pesto in 10 minutes and the result will be much more consistent.
+* making cake with a wheat seed and a baby chicken: rather than beginning from raw materials every time, it would be more effective to first raise many egg-producing chickens, replicate your wheat seed into a field of seed-yielding plants, and build a tool for processing seeds into flour. 
+
+Why learn R first?
+
+* R is a high-level language that is relatively easy to learn. A high level language is like starting with a dozen eggs and a container of flour rather than a wheat seed and a baby chicken. Much of the underlying computer functionality (the 0s and 1s) has already been pre-packaged into more human interpretable language. A low-level language is something closer to what the computer understands---at its lowest level, 0s and 1s, or switches, on or off. Due to its high level, R is a good gateway into computer programming.
+* R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity/), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
+
+
+
+
+Some tips
+There is no right way to do it
+
+
 2. What is a computer program?
     - Elements of a program
         * Input
