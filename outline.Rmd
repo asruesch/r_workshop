@@ -7,25 +7,23 @@ output: html_notebook
 
 ## Day 1
 
-### Why learn R?
+### Why learn a computer programming language?
 
 Do you work on a computer? If so, it's likely you could benefit in some way by learning a programming language. Using a computer without programming skills is like:
 
 * advocating for water quality without understanding the science: you may be able to change the behavior of a few people with your persuasion alone, but you will be much more effective if you can properly communicate the implications of poor water quality, its causes, and the opportunities for restoration.
-* making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a years worth of pesto in 10 minutes and the result will be much more consistent.
+* making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a year's worth of pesto in 10 minutes and the result will be much more consistent.
 * making cake with a wheat seed and a baby chicken: rather than beginning from raw materials every time, it would be more effective to first raise many egg-producing chickens, replicate your wheat seed into a field of seed-yielding plants, and build a tool for processing seeds into flour. 
 
-Why learn R first?
+Okay, but What is so special about the R language?
 
-* R is a high-level language that is relatively easy to learn. A high level language is like starting with a dozen eggs and a container of flour rather than a wheat seed and a baby chicken. Much of the underlying computer functionality (the 0s and 1s) has already been pre-packaged into more human interpretable language. A low-level language is something closer to what the computer understands---at its lowest level, 0s and 1s, or switches, on or off. Due to its high level, R is a good gateway into computer programming.
-* R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity/), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
+* R is a "high-level" language that is relatively easy to learn. Writing code with a high-level language is like starting with a dozen eggs and a container of flour rather than a wheat seed and a baby chicken; much of the underlying computer functionality (the 0s and 1s) has already been pre-packaged into a more human-interpretable language. On the contrary, a low-level language is something closer to what the computer understands (not you)---at its lowest level, computer language is simply 0s and 1s, or switches, on or off. Due to its high-level structure, R is a relatively easy gateway into computer science.
+* R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity "The Popularity of Data Science Software"), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
+* R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
 
+What is a "programming language" anyway? A computer language is a formal (as opposed to natural) language. Contrary to a natural language like English or Spanish, which are verbose and redundant, colorful and metaphorical, and often ambiguous, a formal language is concise and unambiguous. If a syntactical error is committed in a natural language, our brains are generally able to fill in the meaning based on the context. Alternatively, a formal language cannot contain syntactical errors in order to be interpreted correctly. A computer program is a formal language that contains precise instructions that a computer can understand---a box of electrical equipment is not capable of understanding nuanced contextual meaning in language the way a human brain can. This idea was well-captured by Allen Downey:
 
-
-
-Some tips
-There is no right way to do it
-
+> "Programming, and especially debugging, sometimes brings out strong emotions. If you are struggling with a difficult bug, you might feel angry, despondent or embarrassed. Preparing for these reactions might help you deal with them. One approach is to think of the computer as an employee with certain strengths, like speed and precision, and particular weaknesses, like lack of empathy and inability to grasp the big picture. Your job is to be a good manager: find ways to take advantage of the strengths and mitigate the weaknesses." --Allen Downey
 
 2. What is a computer program?
     - Elements of a program
@@ -34,9 +32,13 @@ There is no right way to do it
         * Math
         * Conditional execution
         * Repetition
-    - Natural vs. Formal language
-        * Natural language is spoken, ambiguous, and redundant
-        * Formal language is literal, unambiguous, and concise
+
+
+Some tips
+There is no right way to do it
+
+
+
     - Interactive programming vs. Scripting
     - RStudio tour
     - Show how to type code into console
