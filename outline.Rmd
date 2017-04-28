@@ -7,6 +7,14 @@ output: html_notebook
 
 ## Day 1
 
+### Logistics
+
+1) Download the course pack using the following link:
+    * <https://github.com/asruesch/r_workshop/archive/master.zip>
+    * Or copy it from one of the available flash drives
+    * Save it to your Desktop and extract the contents the zip file
+2) Ensure RStudio and Excel are installed on your machine
+
 ### Why learn a computer programming language?
 
 #### Do you work on a computer?
@@ -52,22 +60,77 @@ For some languages, including R, code can be executed interactively, one stateme
 
 1) It allows you to type in code.
 2) It executes computer code.
-3) It returns data associated with computer code.
-4) It returns feedback, such as error messages.
+3) It returns data associated the code execution.
+4) It prints feedback, such as error messages.
 
-A very important **function** in R is the `print` function. A function in R does something given a context specified by **arguments**. In the English language, a function could by "jump" and the argument could be "how high?". The `print` function just returns a message and the argument to the `print` function is the message, encased in quotes. Let's try typing this into the console, and then pressing the enter key to execute the function.
+Speaking of printing, a very important **function** in R is the `print` **function**. A function in R does something given a context specified by **arguments**. In the English language, a function could by "jump" and the argument could be "how high?". The `print` function just returns a message and the argument to the `print` function is the message, encased in quotes. Let's try typing this into the console, and then pressing the enter key to execute the function.
 
 ```{r}
 print("Talk to me, Goose")
 ```
 
-The R console simply "prints" the message back to you. This may not seem like much on the surface, but the `print` statement becomes increasingly important when we write **scripts**. A script is simply many statements, such as the `print` statement we just executed, written and executed linearly from bottom of the page to the top of the page. These statements are written in a text file, but instead of using the ".txt" file extension, R software recognizes text files with the ".R" or ".r" file extension. Let's create our first script. In RStudio, click File > New File > R Script. This will open a new panel with a tab titled "Untitled1". Let's save the script by clicking File > Save and then providing a name---let's call it `talk_to_me_goose.r".
+The R console simply "prints" the message back to you. This may not seem like much on the surface, but the `print` statement becomes increasingly important when we write **scripts**. A script is simply many statements, such as the `print` statement we just executed, written and executed linearly from the top of the page to the bottom. These statements are written in a text file, but instead of using the ".txt" file extension, R software recognizes text files with the ".R" or ".r" file extension. Let's create our first script. In RStudio, click File > New File > R Script. This will open a new panel with a tab titled "Untitled1". Let's save the script by clicking File > Save and then providing a name---let's call it `talk_to_me_goose.r".
 
-Now that it's saved, let's add some code to it. We can start by typing in the same 
+Now that it's saved, let's add some code to it. We can start by typing in the same line:
 
-    - RStudio tour
-    - Show how to type code into console
-    - Show how to create a script file and run a simple ```print()``` statement
+```{r}
+print("Talk to me, Goose")
+```
+
+Notice that RStudio recognizes certain characters and changes their colors. Although you are ultimately writing to a simple text file, because its file extension is ".r", RStudio recognizes that it contains R code, and then helps you visualize it through color. This is one helpful feature of an Integrated Development Environment, or IDE.
+
+One of the most useful features of the RStudio IDE is the ability to run the code in your scripts in your console. With your cursor on the same line as the `print` statement, press `Ctrl+Enter`.
+
+Another very helpful feature for increasing your productivity is tab completion. Try typing in the following text and hitting the tab button:
+
+```{r}
+"C:/
+```
+
+Notice that RStudio recognizes your file system.
+
+#### Exercise (5 minutes)
+
+See if you can use tab completion to find the folder containing the course pack.
+
+#### Variables
+
+Almost every computer programming language makes use of **variables**. Variables are essentially just containers with names that can be filled with stuff, like your flour and sugar containers in your kitchen. These containers are labeled "flour" and "sugar" and those names succinctly describe the contents. Variables are named and filled using either the `<-` or `=` symbols:
+
+```{r}
+a = 1
+```
+
+Once the container is filled, the contents can be used at any time.
+
+```{r}
+print(a)
+```
+
+#### Exercise (5 minutes)
+
+Use tab completion to find the `data_frame.csv` file in your course pack and create a variable named `filename` filled with the path to `data_frame.csv`. Print the contents of `filename` to ensure 
+
+#### The data.frame
+
+If you are accustomed to using Excel or Access, the data.frame object in R should be very intuitive for you. A data.frame is just a table of data. In a data.frame, each column has a name that identifes the data in it, and the data within a column is all the same type (e.g., letters cannot be mixed with numbers---more on this later). Before we use data.frames in R, let's look at the table that we'd like to use in R. Open the `data_frame.csv` file in Excel and familiarize yourself with the data.
+
+Now we want to read that data into R. To do this, we will use the `read.csv` function. If you remember, a function does something within the context of the arguments passed to it. The `print` function had only one argument, the message to be printed, but the `read.csv` function has several more. Let's take a look at what those arguments are by introducing a new concept in R---the help menu. To access the help menu for any function, all you have to do is type a question mark followed by the function name into the console. For example:
+
+```{r}
+?read.csv
+```
+
+The help menu for this function should appear in one of the panels in RStudio. You'll notice that the help menu has a specific section for the arguments, and `read.csv` has quite a few. The syntax with passing arguments to a function is the funtion name, with parentheses, and within the parentheses all arguments separated by commas. You'll notice in the help menu that the first argument is `file`. This tells R where in your file system the table is located.
+
+#### Exercise (10 min)
+Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environement Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments.
+
+
+
+The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.table` is the file---we can just enter the file first 
+
+
 3. Exploring the ```data.frame```
     - Open a tab-delimited file in Excel, explore data
     - Read data in R
