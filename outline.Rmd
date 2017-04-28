@@ -29,6 +29,7 @@ output: html_notebook
         * Look at data in RStudio
         * Each column has a data type show ```str()```--define data types
         * Make a scatterplot
+        * Show how to get help
 4. Exercise
     - Open the text file but try other arguments
     - Plot the data using different plot arguments
