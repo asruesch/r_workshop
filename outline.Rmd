@@ -9,37 +9,62 @@ output: html_notebook
 
 ### Why learn a computer programming language?
 
-Do you work on a computer? If so, it's likely you could benefit in some way by learning a programming language. Using a computer without programming skills is like:
+####Do you work on a computer?
+
+If so, it's likely you could benefit in some way by learning a programming language. Using a computer without programming skills is like:
 
 * advocating for water quality without understanding the science: you may be able to change the behavior of a few people with your persuasion alone, but you will be much more effective if you can properly communicate the implications of poor water quality, its causes, and the opportunities for restoration.
 * making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a year's worth of pesto in 10 minutes and the result will be much more consistent.
 * making cake with a wheat seed and a baby chicken: rather than beginning from raw materials every time, it would be more effective to first raise many egg-producing chickens, replicate your wheat seed into a field of seed-yielding plants, and build a tool for processing seeds into flour. 
 
-Okay, but What is so special about the R language?
+#### Okay, but What is so special about the R language?
 
 * R is a "high-level" language that is relatively easy to learn. Writing code with a high-level language is like starting with a dozen eggs and a container of flour rather than a wheat seed and a baby chicken; much of the underlying computer functionality (the 0s and 1s) has already been pre-packaged into a more human-interpretable language. On the contrary, a low-level language is something closer to what the computer understands (not you)---at its lowest level, computer language is simply 0s and 1s, or switches, on or off. Due to its high-level structure, R is a relatively easy gateway into computer science.
 * R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity "The Popularity of Data Science Software"), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
 * R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
 
-What is a "programming language" anyway? A computer language is a formal (as opposed to natural) language. Contrary to a natural language like English or Spanish, which are verbose and redundant, colorful and metaphorical, and often ambiguous, a formal language is concise and unambiguous. If a syntactical error is committed in a natural language, our brains are generally able to fill in the meaning based on the context. Alternatively, a formal language cannot contain syntactical errors in order to be interpreted correctly. A computer program is a formal language that contains precise instructions that a computer can understand---a box of electrical equipment is not capable of understanding nuanced contextual meaning in language the way a human brain can. This idea was well-captured by Allen Downey:
+#### What is a "programming language" anyway?
+
+A computer language is a formal (as opposed to natural) language. Contrary to a natural language like English or Spanish, which are verbose and redundant, colorful and metaphorical, and often ambiguous, a formal language is concise and unambiguous. If a syntactical error is committed in a natural language, our brains are generally able to fill in the meaning based on the context. Alternatively, a formal language cannot contain syntactical errors in order to be interpreted correctly. A computer program is a formal language that contains precise instructions that a computer can understand---a box of electrical equipment is not capable of understanding nuanced contextual meaning in language the way a human brain can. This idea was well-captured by Allen Downey:
 
 > "Programming, and especially debugging, sometimes brings out strong emotions. If you are struggling with a difficult bug, you might feel angry, despondent or embarrassed. Preparing for these reactions might help you deal with them. One approach is to think of the computer as an employee with certain strengths, like speed and precision, and particular weaknesses, like lack of empathy and inability to grasp the big picture. Your job is to be a good manager: find ways to take advantage of the strengths and mitigate the weaknesses." --Allen Downey
 
-2. What is a computer program?
-    - Elements of a program
-        * Input
-        * Output
-        * Math
-        * Conditional execution
-        * Repetition
+And how do languages work? Languages have a variety of syntactical and functional qualities, but pretty much every computer language shares the same basic elements:
 
+* Input
+    - Inputs can range from keyboard strokes to files.
+* Output
+    - Outputs are what the computer returns given the inputs.
+* Repetition
+    - Do this same task over and over usually with some variation each iteration.
+* Conditional execution
+    - If this is true, do this, otherwise do that.
+* Math
+    - Addition, subtraction, multiplication, division, exponentiation, etc.
 
-Some tips
-There is no right way to do it
+Think of a computer language like a complex machine, such as a car. At a basic level, the inputs needed to drive a car are fuel and ignition, and the output is mechanical power as the resulting combustion moves a piston. This process is repeated over and over which sustains the movement of the car. However, if the brake is pushed (i.e. conditional execution), the car slows down. The intensity of the braking is a function of the distance the brake pedal is moved toward the floor (i.e. math). Using these elements together can create a wide variety of functionality.
 
+So let's get started already!
 
+#### Interactive programming vs. Scripting
 
-    - Interactive programming vs. Scripting
+For some languages, including R, code can be executed interactively, one statement at a time. So let's try that out. Open RStudio software. You'll notice that there are several panels, some of which have nested tabs. Let's ignore all of the bells and whistles for now, and focus strictly on the **Console**. The Console has a couple of functions:
+
+1) It allows you to type in code.
+2) It executes computer code.
+3) It returns data associated with computer code.
+4) It returns feedback, such as error messages.
+
+A very important **function** in R is the `print` function. A function in R does something given a context specified by **arguments**. In the English language, a function could by "jump" and the argument could be "how high?". The `print` function just returns a message and the argument to the `print` function is the message, encased in quotes. Let's try typing this into the console, and then pressing the enter key to execute the function.
+
+```{r}
+print("Talk to me, Goose")
+```
+
+The R console simply "prints" the message back to you. This may not seem like much on the surface, but the `print` statement becomes increasingly important when we write **scripts**. A script is simply many statements, such as the `print` statement we just executed, written and executed linearly from bottom of the page to the top of the page. These statements are written in a text file, but instead of using the ".txt" file extension, R software recognizes text files with the ".R" or ".r" file extension. Let's create our first script. In RStudio, click File > New File > R Script. This will open a new panel with a tab titled "Untitled1". Let's save the script by clicking File > Save and then providing a name---let's call it `talk_to_me_goose.r".
+
+Now that it's saved, let's add some code to it. We can start by typing in the same 
+
     - RStudio tour
     - Show how to type code into console
     - Show how to create a script file and run a simple ```print()``` statement
@@ -66,4 +91,8 @@ There is no right way to do it
 5. Packages
 6. GIS
 7. Exercise
+
+## Acknowledgments
+
+Allen Downey, [Think Python](http://greenteapress.com/wp/think-python/ "Think Python")
 
