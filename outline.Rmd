@@ -9,7 +9,7 @@ output: html_notebook
 
 ### Why learn a computer programming language?
 
-####Do you work on a computer?
+#### Do you work on a computer?
 
 If so, it's likely you could benefit in some way by learning a programming language. Using a computer without programming skills is like:
 
