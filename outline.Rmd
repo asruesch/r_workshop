@@ -30,6 +30,7 @@ If so, it's likely you could benefit in some way by learning a programming langu
 * R is a "high-level" language that is relatively easy to learn. Writing code with a high-level language is like starting with a dozen eggs and a container of flour rather than a wheat seed and a baby chicken; much of the underlying computer functionality (the 0s and 1s) has already been pre-packaged into a more human-interpretable language. On the contrary, a low-level language is something closer to what the computer understands (not you)---at its lowest level, computer language is simply 0s and 1s, or switches, on or off. Due to its high-level structure, R is a relatively easy gateway into computer science.
 * R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity "The Popularity of Data Science Software"), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
 * R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
+* R is free 
 
 #### What is a "programming language" anyway?
 
