@@ -7,8 +7,6 @@ output:
 
 # Outline
 
-# test changes here blah blah blah
-
 ## Day 1
 
 ### Logistics
@@ -36,6 +34,8 @@ If so, it's likely you could benefit in some way by learning a programming langu
 * R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
 * R is free 
 
+Get rid of this
+-----------------------------
 #### What is a "programming language" anyway?
 
 A computer language is a formal (as opposed to natural) language. Contrary to a natural language like English or Spanish, which are verbose and redundant, colorful and metaphorical, and often ambiguous, a formal language is concise and unambiguous. If a syntactical error is committed in a natural language, our brains are generally able to fill in the meaning based on the context. Alternatively, a formal language cannot contain syntactical errors in order to be interpreted correctly. A computer program is a formal language that contains precise instructions that a computer can understand---a box of electrical equipment is not capable of understanding nuanced contextual meaning in language the way a human brain can. This idea was well-captured by Allen Downey:
@@ -58,8 +58,17 @@ And how do languages work? Languages have a variety of syntactical and functiona
 Think of a computer language like a complex machine, such as a car. At a basic level, the inputs needed to drive a car are fuel and ignition, and the output is mechanical power as the resulting combustion moves a piston. This process is repeated over and over which sustains the movement of the car. However, if the brake is pushed (i.e. conditional execution), the car slows down. The intensity of the braking is a function of the distance the brake pedal is moved toward the floor (i.e. math). Using these elements together can create a wide variety of functionality.
 
 So let's get started already!
+---------------------------------------------
 
-#### Interactive programming vs. Scripting
+
+
+
+
+
+
+
+
+#### Interactive programming vs. Scripting (keep this) tour of RSTudio
 
 For some languages, including R, code can be executed interactively, one statement at a time. So let's try that out. Open RStudio software. You'll notice that there are several panels, some of which have nested tabs. Let's ignore all of the bells and whistles for now, and focus strictly on the **Console**. The Console has a couple of functions:
 
@@ -98,6 +107,11 @@ Notice that RStudio recognizes your file system.
 
 See if you can use tab completion to find the folder containing the course pack.
 
+
+
+
+
+
 #### Variables
 
 Almost every computer programming language makes use of **variables**. Variables are essentially just containers with names that can be filled with stuff, like your flour and sugar containers in your kitchen. These containers are labeled "flour" and "sugar" and those names succinctly describe the contents. Variables are named and filled using either the `<-` or `=` symbols:
@@ -132,20 +146,27 @@ The help menu for this function should appear in one of the panels in RStudio. Y
 Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environement Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments.
 
 *Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.table` is the file---we can just enter the file first 
+  
+#### Data types
+Strings, numbers, integers
+* Each column has a data type show ```str()```--define data types
 
+#### Slicing, subsetting
 
-3. Exploring the ```data.frame```
-    - Open a tab-delimited file in Excel, explore data
-    - Read data in R
-        * Briefly introduce the variable, function, and argument components of the ```read.table()``` call
-        * Look at data in RStudio
-        * Each column has a data type show ```str()```--define data types
+#### Scatterplot
         * Make a scatterplot
-        * Show how to get help
 4. Exercise
     - Open the text file but try other arguments
     - Plot the data using different plot arguments
-  
+
+
+#### For loops
+
+
+# Exercise
+
+Lots of scatterplots, one big pdf
+
 ## Day 2, Using R in your work
 
 1. Database connections with SWIMS
@@ -154,7 +175,8 @@ Try running `read.csv` using your `filename` variable, and saving the data to a 
     - ANOVA
     - Regression
 4. Exercise
-5. Packages
+5. Packages (dplyr)
+    * Reshaping, wide to tall, tall to wide (dplyr)
 6. GIS
 7. Exercise
 
