@@ -7,8 +7,6 @@ output:
 
 # Outline
 
-# test changes here
-
 ## Day 1
 
 ### Logistics
