@@ -1,9 +1,13 @@
 ---
-title: "Introduction to R: Computer Programming for DNR Water Quality Professionals"
-output: html_notebook
+title: 'Introduction to R: Computer Programming for DNR Water Quality Professionals'
+output:
+  html_notebook: default
+  pdf_document: default
 ---
 
 # Outline
+
+# test changes here
 
 ## Day 1
 
@@ -112,7 +116,7 @@ print(a)
 
 Use tab completion to find the `data_frame.csv` file in your course pack and create a variable named `filename` filled with the path to `data_frame.csv`. Print the contents of `filename` to ensure 
 
-#### The data.frame
+#### The ```data.frame```
 
 If you are accustomed to using Excel or Access, the data.frame object in R should be very intuitive for you. A data.frame is just a table of data. In a data.frame, each column has a name that identifes the data in it, and the data within a column is all the same type (e.g., letters cannot be mixed with numbers---more on this later). Before we use data.frames in R, let's look at the table that we'd like to use in R. Open the `data_frame.csv` file in Excel and familiarize yourself with the data.
 
