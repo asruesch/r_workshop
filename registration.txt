@@ -1,2 +1,0 @@
-name	referrer	registration_time
-Gina LaLiberte	Tim Asplund	Thu 04/27/2017 1:15 PM
