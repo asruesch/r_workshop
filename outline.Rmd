@@ -126,9 +126,7 @@ The help menu for this function should appear in one of the panels in RStudio. Y
 #### Exercise (10 min)
 Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environement Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments.
 
-
-
-The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.table` is the file---we can just enter the file first 
+*Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.table` is the file---we can just enter the file first 
 
 
 3. Exploring the ```data.frame```
