@@ -34,40 +34,6 @@ If so, it's likely you could benefit in some way by learning a programming langu
 * R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
 * R is free 
 
-Get rid of this
------------------------------
-#### What is a "programming language" anyway?
-
-A computer language is a formal (as opposed to natural) language. Contrary to a natural language like English or Spanish, which are verbose and redundant, colorful and metaphorical, and often ambiguous, a formal language is concise and unambiguous. If a syntactical error is committed in a natural language, our brains are generally able to fill in the meaning based on the context. Alternatively, a formal language cannot contain syntactical errors in order to be interpreted correctly. A computer program is a formal language that contains precise instructions that a computer can understand---a box of electrical equipment is not capable of understanding nuanced contextual meaning in language the way a human brain can. This idea was well-captured by Allen Downey:
-
-> "Programming, and especially debugging, sometimes brings out strong emotions. If you are struggling with a difficult bug, you might feel angry, despondent or embarrassed. Preparing for these reactions might help you deal with them. One approach is to think of the computer as an employee with certain strengths, like speed and precision, and particular weaknesses, like lack of empathy and inability to grasp the big picture. Your job is to be a good manager: find ways to take advantage of the strengths and mitigate the weaknesses." --Allen Downey
-
-And how do languages work? Languages have a variety of syntactical and functional qualities, but pretty much every computer language shares the same basic elements:
-
-* Input
-    - Inputs can range from keyboard strokes to files.
-* Output
-    - Outputs are what the computer returns given the inputs.
-* Repetition
-    - Do this same task over and over usually with some variation each iteration.
-* Conditional execution
-    - If this is true, do this, otherwise do that.
-* Math
-    - Addition, subtraction, multiplication, division, exponentiation, etc.
-
-Think of a computer language like a complex machine, such as a car. At a basic level, the inputs needed to drive a car are fuel and ignition, and the output is mechanical power as the resulting combustion moves a piston. This process is repeated over and over which sustains the movement of the car. However, if the brake is pushed (i.e. conditional execution), the car slows down. The intensity of the braking is a function of the distance the brake pedal is moved toward the floor (i.e. math). Using these elements together can create a wide variety of functionality.
-
-So let's get started already!
----------------------------------------------
-
-
-
-
-
-
-
-
-
 #### Interactive programming vs. Scripting (keep this) tour of RSTudio
 
 For some languages, including R, code can be executed interactively, one statement at a time. So let's try that out. Open RStudio software. You'll notice that there are several panels, some of which have nested tabs. Let's ignore all of the bells and whistles for now, and focus strictly on the **Console**. The Console has a couple of functions:
