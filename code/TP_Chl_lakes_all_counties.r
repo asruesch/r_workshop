@@ -15,12 +15,12 @@ con = odbcConnect("ora_secprd_64",
                   rows_at_time=1000,
                   believeNRows=FALSE)
 
-counties = read.csv("~/r_workshop/sample_data/WI_counties.csv", as.is=TRUE)
-mod_data = read.csv("~/r_workshop/sample_data/TP_CHL_models.csv")
+counties = read.csv("~/r_workshop/data/WI_counties.csv", as.is=TRUE)
+mod_data = read.csv("~/r_workshop/data/TP_CHL_models.csv")
 
 for (c in 1:72) {
   # Create SWIMS query
-  query = paste(readLines("sample_data/tp_chl.sql"), collapse=" ")
+  query = paste(readLines("code/tp_chl.sql"), collapse=" ")
   query = str_replace_all(query, "\\t|\\n|\\r", "")
   query = str_replace(query, "%county%", counties$NAME[c])
   
