@@ -129,6 +129,47 @@ Take 5 minutes to try out variable assignment using mathematical operators. Try 
 
 ----
 
+### scripts
+
+You've probably begun to notice that it is tedious to write every statement of code, line-by-line, one-at-a-time, at the command prompt in the R console. Fortunately, you will not have to do this any longer. Enter the **script**.
+
+A script contains many lines of code that can be executed simultaneously. It is a file stored on your hard drive, much like a .docx or .xlsx file, except it has a .r extension instead. 
+
+RStudio has a feature that makes it very easy to create a script. In the file menu, click new file, and then click R script. A new blank pane should appear:
+
+![](img/rstudio_script_pane.png)
+
+We are going to save this file on our hard drive, but first, a little house cleaning. We've set up an RStudio **project** for you, which is simply a way of containing many useful elements relating to a project in one place. In the file menu, click Open Project, navigate to the place you stored the course pack, and select the file called "r_workshop.Rproj". Doing so will set up our R session to work out of our course pack folder. You can verify this by clicking the Files tab in the lower-right pane:
+
+![](img/rstudio_files_tab.png)
+
+A window like the one above should appear with files associated with our class.
+
+Now, let's save our R script. Click the save button on our R script pane:
+
+![](img/save_button.png)
+
+
+
+Notice that RStudio recognizes certain characters and changes their colors. Although you are ultimately writing to a simple text file, because its file extension is ".r", RStudio recognizes that it contains R code, and then helps you visualize it through color. This is one helpful feature of an Integrated Development Environment, or IDE.
+
+One of the most useful features of the RStudio IDE is the ability to run the code in your scripts in your console. With your cursor on the same line as the `print` statement, press `Ctrl+Enter`.
+
+Another very helpful feature for increasing your productivity is tab completion. Try typing in the following text and hitting the tab button:
+
+```{r}
+"C:/
+```
+
+Notice that RStudio recognizes your file system.
+
+#### Exercise (5 minutes)
+
+See if you can use tab completion to find the folder containing the course pack.
+
+
+---
+
 ### Functions
 
 In the above two statements, we had to deduce the value of x:
@@ -183,8 +224,11 @@ z = y * 2
 print(z)
 ```
 
+This may not seem like much, but one of the most powerful aspects of R, and what sets it apart from many other computer programming languages is its ability to do math across sequences of numbers--it is what we refer to as an "array-based language".
 
-The R console simply "prints" the message back to you. This may not seem like much on the surface, but the `print` statement becomes increasingly important when we write **scripts**. A script is simply many statements, such as the `print` statement we just executed, written and executed linearly from the top of the page to the bottom. These statements are written in a text file, but instead of using the ".txt" file extension, R software recognizes text files with the ".R" or ".r" file extension. Let's create our first script. In RStudio, click File > New File > R Script. This will open a new panel with a tab titled "Untitled1". Let's save the script by clicking File > Save and then providing a name---let's call it `talk_to_me_goose.r".
+### Exercise
+
+Let's take 20 minutes to explore mathematical operators, variables, and functions. Try using vectors with other functions, such as the ```mean()``` and ```stdev()``` (standard deviation) functions.
 
 Now that it's saved, let's add some code to it. We can start by typing in the same line:
 
@@ -192,44 +236,7 @@ Now that it's saved, let's add some code to it. We can start by typing in the sa
 print("Talk to me, Goose")
 ```
 
-Notice that RStudio recognizes certain characters and changes their colors. Although you are ultimately writing to a simple text file, because its file extension is ".r", RStudio recognizes that it contains R code, and then helps you visualize it through color. This is one helpful feature of an Integrated Development Environment, or IDE.
 
-One of the most useful features of the RStudio IDE is the ability to run the code in your scripts in your console. With your cursor on the same line as the `print` statement, press `Ctrl+Enter`.
-
-Another very helpful feature for increasing your productivity is tab completion. Try typing in the following text and hitting the tab button:
-
-```{r}
-"C:/
-```
-
-Notice that RStudio recognizes your file system.
-
-#### Exercise (5 minutes)
-
-See if you can use tab completion to find the folder containing the course pack.
-
-
-
-
-
-
-#### Variables
-
-Almost every computer programming language makes use of **variables**. Variables are essentially just containers with names that can be filled with stuff, like your flour and sugar containers in your kitchen. These containers are labeled "flour" and "sugar" and those names succinctly describe the contents. Variables are named and filled using either the `<-` or `=` symbols:
-
-```{r}
-a = 1
-```
-
-Once the container is filled, the contents can be used at any time.
-
-```{r}
-print(a)
-```
-
-#### Exercise (5 minutes)
-
-Use tab completion to find the `data_frame.csv` file in your course pack and create a variable named `filename` filled with the path to `data_frame.csv`. Print the contents of `filename` to ensure 
 
 #### The ```data.frame```
 
