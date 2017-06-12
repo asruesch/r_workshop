@@ -236,8 +236,6 @@ Now that it's saved, let's add some code to it. We can start by typing in the sa
 print("Talk to me, Goose")
 ```
 
-
-
 #### The ```data.frame```
 
 If you are accustomed to using Excel or Access, the data.frame object in R should be very intuitive for you. A data.frame is just a table of data. In a data.frame, each column has a name that identifes the data in it, and the data within a column is all the same type (e.g., letters cannot be mixed with numbers---more on this later). Before we use data.frames in R, let's look at the table that we'd like to use in R. Open the `data_frame.csv` file in Excel and familiarize yourself with the data.
@@ -277,14 +275,20 @@ Lots of scatterplots, one big pdf
 
 ## Day 2, Using R in your work
 
-a.	More detailed plotting
+```{r}
+# At some point on day 2 before my data management section, I presume we will be reading in one of the course datasets. 
+d = read.csv("data/TP_CHL_models.csv")
+```
+
+a.	More detailed plotting (Yellow)
   i. boxplots
   ii. histogram
   iii. multilayer plots, points with lines, etc.
   iv. axes, labels, other plotting arguments
   v. saving plots (png, pdf)
   vi. exercise
-b. Simple Stats
+
+b. Simple Stats (Matt)
   i. Regression
   ii. t-test
   iii. Two-way ANOVA
@@ -295,28 +299,58 @@ b. Simple Stats
     4. residuals
     5. r.squared
   v.	exercise
-c. Data management
-  i. General philosophy: Better = maintaining original data, Worse = creating many intermediate datasets 
-  ii. Pull in multiple tables
+
+----
+
+### Data management
+
+#### Philosophies/Rules
+
+Say you have a task where you need to retrieve a dataset, manipulate the data in a multi-step process, analyze the manipulated data, and return a result. One way to accomplish this task would be to use Excel. If you choose to use Excel, your workflow may look something like this:
+
+1. Open a second-hand .xlsx file, try to understand the unintelligibly named worksheets, and hope you select the correct data given that there are bits of fragmented tables strewn about.
+2. Create a new .xlsx file, copy your data into it, and save.
+3. Create several new worksheets, each associated with an intermediate calculation.
+4. Send your third-hand .xlsx file to your client/colleague for them to sift through the unintelligibly named worksheets.
+
+With your new R skills (and working with your colleagues with new R skills), you will be able to improve your workflow to look something like this:
+
+1. Retrieve your data from the original source.
+2. Write a script that contains all intermediate processing steps without saving any intermediate data.
+3. Send your results to your client in a simple, text-based file format such as tab-delimited.
+
+The benefits of the R-driven process is this:
+
+1. Each step in your retrieval, manipultation, analysis, and delivery process is well-documented and repeatable.
+2. You are confident you are using the correct, original data, you have not altered the original data in the process, and you have not created any uneccessary clutter on your hard-drive with intermediate data files.
+3. Your data result will be readable 20-30 years from now even though Excel has been deprecated.
+
+To distill the above process, here are a few general guidelines:
+
+1. Refer to the original dataset without altering it
+2. Create as few intermediate datasets as possible
+3. Save your product in a simple, timeless data format
+
+There are, of course, exceptions to the above rules, but these 3 will serve you well for most tasks.
+
+
+
+ii. Pull in multiple tables
   iii. RODBC or ROracle 
-1. Introduce packages
-  a. Use base R when possible
-  b. Could be worthwhile to learn certain packages rather coding yourself from base functions
-  c. Resources for learning new packages
+    1. Introduce packages
+      a. Use base R when possible
+      b. Could be worthwhile to learn certain packages rather coding yourself from base functions
+      c. Resources for learning new packages
+
 d. MORE WOW FACTOR (everyone contributes)
   i. Shiny
   ii. Spatial Analysis
   iii. Advanced plotting
   iv. Advanced statistics (e.g., ordination, CART, vegan)
+
 e. Tying everything together exercise
   i. Pull in large datasets
   ii. For loop
   iii. Subset
   iv. Fit regression
-v. Scatterplot with abline()
-
-
-## Acknowledgments
-
-Allen Downey, [Think Python](http://greenteapress.com/wp/think-python/ "Think Python")
-
+  v. Scatterplot with abline()
