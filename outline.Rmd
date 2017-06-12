@@ -306,23 +306,23 @@ b. Simple Stats (Matt)
 
 #### Philosophies/Rules
 
-Say you have a task where you need to retrieve a dataset, manipulate the data in a multi-step process, analyze the manipulated data, and return a result. One way to accomplish this task would be to use Excel. If you choose to use Excel, your workflow may look something like this:
+Say you have a task where you need to retrieve a dataset, manipulate the data in a multi-step process, analyze the manipulated data, and return a result. One way to accomplish this task would be to use Excel. If you choose to use Excel, and most of your colleagues use Excel as well, your workflow may look something like this:
 
-1. Open a second-hand .xlsx file, try to understand the unintelligibly named worksheets, and hope you select the correct data given that there are bits of fragmented tables strewn about.
-2. Create a new .xlsx file, copy your data into it, and save.
-3. Create several new worksheets, each associated with an intermediate calculation.
-4. Send your third-hand .xlsx file to your client/colleague for them to sift through the unintelligibly named worksheets.
+1. Open a second-hand .xlsx file, try to understand what the names of the worksheets mean, and hope you select the correct data given that there are bits of fragmented tables strewn about.
+2. Create a new .xlsx file, copy and paste your data into it, and save.
+3. Create several new worksheets in your .xlsx file, each associated with an intermediate calculation.
+4. Send your third-hand .xlsx file to your client/colleague, and they will repeat the above process for their task.
 
 With your new R skills (and working with your colleagues with new R skills), you will be able to improve your workflow to look something like this:
 
 1. Retrieve your data from the original source.
-2. Write a script that contains all intermediate processing steps without saving any intermediate data.
+2. Write a script that contains all intermediate processing steps without needing to save any intermediate data.
 3. Send your results to your client in a simple, text-based file format such as tab-delimited.
 
 The benefits of the R-driven process is this:
 
 1. Each step in your retrieval, manipultation, analysis, and delivery process is well-documented and repeatable.
-2. You are confident you are using the correct, original data, you have not altered the original data in the process, and you have not created any uneccessary clutter on your hard-drive with intermediate data files.
+2. You are confident you are using the correct data, you have not altered the original data in the process, and you have not created any uneccessary clutter on your hard-drive with intermediate data files.
 3. Your data result will be readable 20-30 years from now even though Excel has been deprecated.
 
 To distill the above process, here are a few general guidelines:
@@ -333,6 +333,7 @@ To distill the above process, here are a few general guidelines:
 
 There are, of course, exceptions to the above rules, but these 3 will serve you well for most tasks.
 
+Let's look at an example workflow using wastewater Discharge Monitoring Report data (DMR):
 
 
 ii. Pull in multiple tables
