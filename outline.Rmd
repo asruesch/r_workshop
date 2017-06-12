@@ -277,16 +277,44 @@ Lots of scatterplots, one big pdf
 
 ## Day 2, Using R in your work
 
-1. Database connections with SWIMS
-2. Exercise
-3. Statistical Modeling with R
-    - ANOVA
-    - Regression
-4. Exercise
-5. Packages (dplyr)
-    * Reshaping, wide to tall, tall to wide (dplyr)
-6. GIS
-7. Exercise
+a.	More detailed plotting
+  i. boxplots
+  ii. histogram
+  iii. multilayer plots, points with lines, etc.
+  iv. axes, labels, other plotting arguments
+  v. saving plots (png, pdf)
+  vi. exercise
+b. Simple Stats
+  i. Regression
+  ii. t-test
+  iii. Two-way ANOVA
+  iv. Model objects
+    1. Re-hash the str() object
+    2. summary
+    3. p-values
+    4. residuals
+    5. r.squared
+  v.	exercise
+c. Data management
+  i. General philosophy: Better = maintaining original data, Worse = creating many intermediate datasets 
+  ii. Pull in multiple tables
+  iii. RODBC or ROracle 
+1. Introduce packages
+  a. Use base R when possible
+  b. Could be worthwhile to learn certain packages rather coding yourself from base functions
+  c. Resources for learning new packages
+d. MORE WOW FACTOR (everyone contributes)
+  i. Shiny
+  ii. Spatial Analysis
+  iii. Advanced plotting
+  iv. Advanced statistics (e.g., ordination, CART, vegan)
+e. Tying everything together exercise
+  i. Pull in large datasets
+  ii. For loop
+  iii. Subset
+  iv. Fit regression
+v. Scatterplot with abline()
+
 
 ## Acknowledgments
 
