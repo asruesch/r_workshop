@@ -260,7 +260,7 @@ Finally, we may want some idea of how big our data.frame is. To get the number o
 What if we just want to look at a particular column? You may have noticed that the names of each variable in the output of the `str` command are preceded by a `$`. We can use this to reference particular columns by name. Say we have a column named "TP" within a data.frame named "LakeMendota". To access and run functions on just those TP values, we can reference them directly using `LakeMendota$TP`. We'll come back to subsetting data.frames a bit later. 
 
 #### Exercise (10 min)
-Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environement Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`,`head`,`tail`,`names`,`colnames`,`nrow`, and `ncol` functions, and access specific columns with `$`. 
+Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environment Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`,`head`,`tail`,`names`,`colnames`,`nrow`, and `ncol` functions, and access specific columns with `$`. 
 
 *Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.csv` is the file---we can just enter the file first 
   
