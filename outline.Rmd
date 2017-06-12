@@ -246,7 +246,16 @@ Now we want to read that data into R. To do this, we will use the `read.csv` fun
 ?read.csv
 ```
 
+
 The help menu for this function should appear in one of the panels in RStudio. You'll notice that the help menu shows the usage of `read.csv` and some similar functions, and a specific section with descriptions of each argument - `read.csv` has quite a few. The syntax with passing arguments to a function is the function name, with parentheses, and within the parentheses all arguments separated by commas. You can see this syntax in the Usage section. You'll notice in the help menu that the first argument is `file`. This tells R where in your file system the table is located, and is required for the function to run. All of the other arguments (`header`,`sep`,etc.), have default values and are thus not required to be entered by the user. Default values are shown in the Usage section with an `=` sign: `read.csv(file,header=TRUE)`, and additional details provided in the Arguments section.
+
+Let's use what we've learned about read.csv to load in a data.frame
+
+```{r}
+
+d = read.csv("data/TP_CHL_models.csv")
+```
+
 
 Once we have the data.frame read into R and saved as an object, it is often useful to view it, check that the data were read in correctly, check column names, check numbers of rows and columns, etc. Since you don't always have a spreadsheet of the data in front of you while working in R, it's useful to become familiar with interpreting these attributes of your data. We can explore our data.frame in a few ways. 
 
@@ -260,7 +269,7 @@ Finally, we may want some idea of how big our data.frame is. To get the number o
 What if we just want to look at a particular column? You may have noticed that the names of each variable in the output of the `str` command are preceded by a `$`. We can use this to reference particular columns by name. Say we have a column named "TP" within a data.frame named "LakeMendota". To access and run functions on just those TP values, we can reference them directly using `LakeMendota$TP`. We'll come back to subsetting data.frames a bit later. 
 
 #### Exercise (10 min)
-Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environement Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`,`head`,`tail`,`names`,`colnames`,`nrow`, and `ncol` functions, and access specific columns with `$`. 
+Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environment Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`,`head`,`tail`,`names`,`colnames`,`nrow`, and `ncol` functions, and access specific columns with `$`. 
 
 *Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.csv` is the file---we can just enter the file first 
   
@@ -275,10 +284,10 @@ Strings, numbers, integers
         
 A HUGE benefit of using R is its ability to produce customizable, complex, and downright pretty visualizations of data. A drawback of a 2-day workshop is that we can't quite teach you all of that. We can teach you the basics, which act as building blocks toward higher-level graphics. 
 
-We'll come back to making figures tomorrow, but by this point in the workshop, you've earned the right to see what the data look like outside of a data.frame. The key building block in making graphics is the `plot` function. This is a highly versatile function - it can take lots of different data and object types as inputs. The default usage is to just give it x and y coordinates in the form `plot(x,y)`, and it will output a scatterplot. In RStudio, this will show up in its own panel.   
+We'll come back to making figures tomorrow, but by this point in the workshop, you've earned the right to see what the data look like outside of a data.frame. The key building block in making graphics is the `plot` function. This is a highly versatile function - it can take lots of different data and object types as inputs. The default usage is to just give it x and y coordinates in the form `plot(x,y)`, and it will output a scatterplot. In RStudio, this will show up in its own panel. The `x` and `y` arguments can be single values, vectors of values, or columns from a data.frame.   
         
 #### Exercise (10 min)
-
+Use your data.frame to play around with making simple scatterplots. Try to integrate some of your knowledge of data subsetting to remake the plot for different lakes. 
 
 
 4. Exercise
@@ -297,8 +306,51 @@ Lots of scatterplots, one big pdf
 
 ```{r}
 # At some point on day 2 before my data management section, I presume we will be reading in one of the course datasets. 
+
+#Alex: I think we can actually start using this on day 1. I'll use it in my data.frame section
+
 d = read.csv("data/TP_CHL_models.csv")
 ```
+
+
+#### More detailed plotting
+
+Yesterday, we showed you how to make simple scatterplots. But, there are numerous other types of plots you can make, infinite ways to customize them, and some techniques for creating publication or web-quality figure. Today, we'll introduce  you to a bit of all of the above. 
+
+#####Other plot types
+
+The basic `plot` command is versatile and can take various types of input arguments, but there are other functions. For instance, if you want to make a boxplot, then the `boxplot` command might suit you. If you want to make a histogram, `hist` is probably a good option. Let's try these.
+
+boxplot of something in the dataframe
+
+hist of something in the dataframe
+
+These and many other functions exist, and they're not too hard to find. Just google them (e.g., "R histogram"). Feel free to try to find other plot types that you can make in R on your own. For now though, let's go back to our basic scatterplot and learn how to customize it (aka, add complexity and make it pretty). 
+
+First, let's say we want to make a scatterplot with an overlayed line that compares our points to an existing model. The general approach in R is to first create your simple plot, and then add features to it. You can add features with a number of functions, including `lines`, `points`, `polygon`, and more. These don't create plots on their own - they add lines, points, or a polygon to a plot that has already been made and is currently active. To make a scatterplot with an overlayed fit line, we can use the data.frame from our project file. We first create our scatterplot with `plot(df$TP,df$Chl)`. Then, we can use the 2nd data.frame from our project folder, which already has x (TP) and y (Chl) coordinates corresponding to a widely used model, to create a line with `lines(model$TP,model$Chl)`. 
+
+Great, now you have a multi-layer plot. 'Tis a shame that it's pretty ugly! Let's spruce it up. You may have noticed that in the help file for `plot`, there are a number of additional arguments, including things like `xlab` and `ylab` to name your axes and `main` to name the plot title. These arguments that require text strings can be set like so: `plot(x,y,xlab="Date",ylab="TP (mg/L)")`. 
+
+Then, in the help files for `plot`,`lines`, etc., there is something called "Further graphical parameters (see par)...". `par` is essentially a set of default graphical parameters that can be reset, or that can be changed for the current plot within the plot command. Use `?par` to see the numerous options. We won't walk through all of them now, but it is worth exploring these options if you want to fully customize your plots. For now, here is a table with a few of the most commonly used arguments
+
+  some table here with col, pch, cex, lty, lwd
+  
+Each of the arguments can be set within a call to a plotting command (e.g., `plot(x,y,col="black",cex=1.5,pch=21)). Generally, a simple way to find what line or point types are available, and their corresponding codes, is to google it (or google image): "r pch" or "r lty". Colors can be pretty intuitive ("black","red", etc.). You can also google image "r colors" to see a bunch of other pre-named colors you can access, or you can provide RGB codes in the form "#RRGGBB", or use existing color palettes and functions (e.g. (rainbow). 
+
+There are some arguments that can only be set in a specific call to the par function. Say we don't want a title, and we want to eliminate the space above the plot where the title would be. To do that, we need to remove the space that R creates above the plot by default, and we can do that with a `par` argument called `mar`. `mar` takes a vector of 4 values, where each is the number of lines of space provided on each side of the plot in the form c(bottom, left, top, right). The default is c(5.1,4.1,4.1,2). So, R is provided 4.1 lines of space above the plot (the 3rd value in that vector). To reduce that to something small, we just reset its value in par: `par(mar=c(5.1,4.1,0.5,2))`. 
+
+One of the things that `par` allows us to do is multi-panel plotting. Perhaps you noticed that each time you ran the `plot` function, the previous plot was overwritten. What if you wanted two plots on the same figure, next to each other. Before creating the first plot, we can use `par` to tell R that we're going to create 2 plots in the figure. There are two `par` arguments that control this: `mfrow` and `mfcol`. I think of the "mf" as "multiple figures" and "col" or "row" to indicate the number of columns or rows, respectively, and how many items in each one. Thus, `par(mfrow=c(3,2))` creates a 6-panel plot with 3 rows of 2 items (columns) each. To make two plots side-by-side, we can use `par(mfrow=c(1,2))`. 
+
+Finally, what if we want to save our plot so that it exists outside of our R session? The recommended strategy is to use a graphic devices function, which give you full control over dimensions, resolution, background color, etc. The functions are named pretty intuitively: `pdf`, `png`, `jpeg`, `tiff`, etc. The arguments include: filename, width, height, units, and res. Units can be "px" (default), "in", "cm", or "mm" - for images that I use in powerpoints or documents, I generally use "in", as these are typically easy to fit onto a slide or a page. Then, you can set width and height to typical dimensions (width=6,height=4). "res" defines the dots/pixels per inch for bitmap type images. Generally, 150 is sufficient for presentations, 300 is good for print, but some publications require higher. "filename" is whatever you want to name the file with the appropriate file extension, which will be saved to the working directory, or you can supply the path and filename to save it elsewhere. 
+
+Now that you know what information to give the graphic device function, how does it work in conjunction with your plotting code. When you run a `png` function for instance, nothing seems to happen in RStudio. However, behind the scenes, R opens a new graphical device, onto which all the subsequent lines of code will be run and plotted. At the end of those lines of code, we need to tell R to stop the plotting and save the .png file. We can do this by telling R to shut off the graphical device. We can do that by running `dev.off`. Let's see how all this comes together to create and save a figure...
+
+ #show example here
+
+#### Exercise
+Whoever makes the prettiest plot wins! (By entirely subjective standards, of course)
+
+Play around with creating and customizing prettier plots in R, starting with the data.frames you worked with yesterday. Play with the settings for axes, colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving them. 
 
 a.	More detailed plotting (Yellow)
   i. boxplots
