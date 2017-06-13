@@ -5,8 +5,6 @@ author:
 - "Matt Diebel"
 - "Alex Latzka"
 output: ioslides_presentation
-
-  
 ---
 
 # Outline
