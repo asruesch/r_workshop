@@ -1,17 +1,13 @@
 ---
-title: 'Introduction to R: Computer Programming for DNR Water Quality Professionals. Day 1'
+title: 'Introduction to R: Computer Programming for DNR Water Quality Professionals, Day 1'
 author:
 - "Aaron Ruesch"
 - "Matt Diebel"
 - "Alex Latzka"
-output: ioslides_presentation
+output:
+  ioslides_presentation:
+    incremental: true
 ---
-
-# Outline
-
-# Day 1
-
-----
 
 ## Logistics
 
@@ -21,8 +17,6 @@ output: ioslides_presentation
     * Save it wherever you'd like and extract the contents the zip file
 2) Ensure RStudio and Excel are installed on your computer
 
-----
-
 ## The plan for today
 
 1) Why learn a computer language?
@@ -30,13 +24,13 @@ output: ioslides_presentation
 3) Tour of RStudio software
 4) Basic R syntax
 
-----
+# Why learn a computer programming language?
 
-## Why learn a computer programming language?
+## Do you work on a computer?
 
-### Do you work on a computer?
+If so, it's likely you could benefit in some way by learning a programming language.
 
-If so, it's likely you could benefit in some way by learning a programming language. Using a computer without programming skills is like:
+## Using a computer without programming skills is like: {.smaller}
 
 * advocating for water quality without understanding the science: you may be able to change the behavior of a few people with your persuasion alone, but you will be much more effective if you can properly communicate the implications of poor water quality, its causes, and the opportunities for restoration.
 * making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a year's worth of pesto in 10 minutes and the result will be much more consistent.
@@ -48,7 +42,7 @@ If so, it's likely you could benefit in some way by learning a programming langu
 * R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
 * R is free
 
-## R can do all sorts of amazing things:
+# R can do all sorts of amazing things
 
 Insert some amazing things here
 
@@ -204,7 +198,7 @@ So how do we know what arguments to use for each function? We can use R help for
 
 Or, we can simply type a question mark followed by the function name in our console:
 
-```{r}
+```{r eval=FALSE}
 ?print
 ```
 
@@ -236,7 +230,7 @@ If you are accustomed to using Excel or Access, the data.frame object in R shoul
 
 Now we want to read that data into R. To do this, we will use the `read.csv` function. If you remember, a function does something within the context of the arguments passed to it. The `print` function had only one argument, the message to be printed, but the `read.csv` function has several more. Let's take a look at what those arguments are by introducing a new concept in R---the help menu. To access the help menu for any function, all you have to do is type a question mark followed by the function name into the console. For example:
 
-```{r}
+```{r eval=FALSE}
 ?read.csv
 ```
 
