@@ -253,7 +253,109 @@ Try running `read.csv` using your `filename` variable, and saving the data to a 
 
 *Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.table` is the file---we can just enter the file first 
   
-#### Data types
+### Data types
+
+Let's say you are working in Excel, and you want to create a column that contains quantities of money associated with different people.
+
+![](img/excel_money_example.png)
+
+
+For the purposes of printing, you would like to format the quantities with a dollar sign in front of the value, with two significant digits to represent cents
+
+![](img/excel_money_example_formatted.png)
+
+Now, let's say you need to populate one of the records with a value of "unknown", so you type in the characters u-n-k-n-o-w-n. Now, when you try to format that column with a dollar sign and two significant digits, Excel returns an error for the field containing the "unknown" value.
+
+
+
+This is because Excel does not recognize the "unknown" value when formatting the whole column as currency. The "unknown" value is a different date **type**. The formatting function in Excel only recognizes numeric data types and therefore throws in error, and R will do the same with mismatches in data types.
+
+We are going to talk about 4 main data types in R:
+
+#### Numbers
+
+The two data types that represent numbers are "numeric" and "integer". A numeric data type is a quantity with a decimal point (sometimes referred to as "float" or "double" in other programming languages), and an integer is a quantity without a decimal point, simple as that! You can use the ```class``` function to query the data type of a value:
+
+```{r}
+class(1.5)
+class(1)
+```
+
+Notice that value of 1 is defined as a numeric data type. If you want to be explicit about defining an integer, you must use a **coercion** function. Each data type has a coercion function--the name of the function is just the data type preceded by ```as.```, such as ```as.numeric``` or ```as.integer```.
+
+```{r}
+class(as.integer(1))
+```
+
+#### Characters
+
+"Characters" (often referred to as "strings" in other programming languages) can include alphabet letters, digits, and special symbols, but are all treated as text. Characters can be defined by wrapping them in quotes:
+
+```{r}
+class("This is a character data type")
+class("Numbers (1) and symbols ($) can be included in characters")
+class("1")
+```
+
+You can also coerce a value to a character using its coercion function:
+
+```{r}
+char_var = as.character(1.52342)
+print(char_var)
+class(char_var)
+```
+
+#### Logical
+
+The final data type we'll talk about today is the "logical" data type. The logical data type is the simplest because it can take on only two values, TRUE and FALSE:
+
+```{r}
+class(TRUE)
+```
+
+The values TRUE and FALSE are only considered logical data type if written in these ways:
+
+```{r}
+# All caps
+class(TRUE)
+class(FALSE)
+# Capital T or F
+class(T)
+class(F)
+# 0 or 1
+class(as.logical(0))
+class(as.logical(1))
+```
+
+#### Data types and data frames
+
+Data types become more important in data frames. In a data frame, a column can only contain values of a single data type. For example, a column intended to contain numeric data (such as the money column in our Excel table) 
+
+#### Exercise
+
+Take 5 minutes to test different functionality on different data types to see how R behaves (for example, try dividing an integer or multiplying by a character).
+
+----
+
+###
+
+```{r}
+# At some point on day 2 before my data management section, I presume we will be reading in one of the course datasets. 
+d = read.csv("data/Vilas_TP_CHL_data.csv")
+```
+
+A data frame has rows and columns. Each column contains data of the same **type**. R has several data types including:
+
+
+
+We can easily view the data types of a data frame using the ```str``` function:
+
+```{r}
+str(d)
+```
+
+
+
 Strings, numbers, integers
 * Each column has a data type show ```str()```--define data types
 
@@ -274,11 +376,6 @@ Strings, numbers, integers
 Lots of scatterplots, one big pdf
 
 ## Day 2, Using R in your work
-
-```{r}
-# At some point on day 2 before my data management section, I presume we will be reading in one of the course datasets. 
-d = read.csv("data/TP_CHL_models.csv")
-```
 
 a.	More detailed plotting (Yellow)
   i. boxplots
