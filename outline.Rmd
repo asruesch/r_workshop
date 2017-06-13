@@ -1,6 +1,6 @@
 ---
 title: 'Introduction to R: Computer Programming for DNR Water Quality Professionals, Day 1'
-author:
+authors:
 - "Aaron Ruesch"
 - "Matt Diebel"
 - "Alex Latzka"
@@ -36,7 +36,7 @@ If so, it's likely you could benefit in some way by learning a programming langu
 * making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a year's worth of pesto in 10 minutes and the result will be much more consistent.
 * making cake with a wheat seed and a baby chicken: rather than beginning from raw materials every time, it would be more effective to first raise many egg-producing chickens, replicate your wheat seed into a field of seed-yielding plants, and build a tool for processing seeds into flour. 
 
-## Okay, but What is so special about the R language?
+## What is so special about the R language?
 
 * R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity "The Popularity of Data Science Software"), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
 * R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
@@ -44,11 +44,21 @@ If so, it's likely you could benefit in some way by learning a programming langu
 
 # R can do all sorts of amazing things
 
-Insert some amazing things here
+## Presentations
 
-----
+This slideshow brought to you by R!
 
-## Tour of RStudio
+## GIS 
+
+```{r fig.width=8, fig.height=4}
+library(leaflet)
+leaflet() %>%
+  addTiles()
+```
+
+
+# Tour of RStudio
+
 
 R comes in lots of different flavors, but the way that we will be using R for this class is through a software package called RStudio. RStudio packages many of the things you need to be a productive programmer all in place. RStudio can help beginner programmers learn quickly, but it also has enough functionality to satisfy the advanced programmer as well. To start, let's get a feel for the RStudio interface.
 
