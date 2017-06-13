@@ -4,16 +4,18 @@ author:
 - "Aaron Ruesch"
 - "Matt Diebel"
 - "Alex Latzka"
-output: ioslides_presentation
+output:
+  html_notebook: default
+  pdf_document: default
 ---
 
 # Outline
 
-# Day 1
+## Day 1
 
 ----
 
-## Logistics
+### Logistics
 
 1) Download the course pack using the following link:
     * <http://bit.ly/2s7uBzz>
@@ -23,7 +25,7 @@ output: ioslides_presentation
 
 ----
 
-## The plan for today
+### The plan for today
 
 1) Why learn a computer language?
 2) Neat things you can do with R
@@ -32,9 +34,9 @@ output: ioslides_presentation
 
 ----
 
-## Why learn a computer programming language?
+### Why learn a computer programming language?
 
-### Do you work on a computer?
+#### Do you work on a computer?
 
 If so, it's likely you could benefit in some way by learning a programming language. Using a computer without programming skills is like:
 
@@ -42,19 +44,19 @@ If so, it's likely you could benefit in some way by learning a programming langu
 * making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a year's worth of pesto in 10 minutes and the result will be much more consistent.
 * making cake with a wheat seed and a baby chicken: rather than beginning from raw materials every time, it would be more effective to first raise many egg-producing chickens, replicate your wheat seed into a field of seed-yielding plants, and build a tool for processing seeds into flour. 
 
-## Okay, but What is so special about the R language?
+#### Okay, but What is so special about the R language?
 
 * R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity "The Popularity of Data Science Software"), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
 * R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
 * R is free
 
-## R can do all sorts of amazing things:
+#### R can do all sorts of amazing things:
 
 Insert some amazing things here
 
 ----
 
-## Tour of RStudio
+#### Tour of RStudio
 
 R comes in lots of different flavors, but the way that we will be using R for this class is through a software package called RStudio. RStudio packages many of the things you need to be a productive programmer all in place. RStudio can help beginner programmers learn quickly, but it also has enough functionality to satisfy the advanced programmer as well. To start, let's get a feel for the RStudio interface.
 
@@ -147,8 +149,6 @@ Now, let's save our R script. Click the save button on our R script pane:
 
 ![](img/save_button.png)
 
-
-
 Notice that RStudio recognizes certain characters and changes their colors. Although you are ultimately writing to a simple text file, because its file extension is ".r", RStudio recognizes that it contains R code, and then helps you visualize it through color. This is one helpful feature of an Integrated Development Environment, or IDE.
 
 One of the most useful features of the RStudio IDE is the ability to run the code in your scripts in your console. With your cursor on the same line as the `print` statement, press `Ctrl+Enter`.
@@ -164,7 +164,6 @@ Notice that RStudio recognizes your file system.
 #### Exercise (5 minutes)
 
 See if you can use tab completion to find the folder containing the course pack.
-
 
 ---
 
@@ -373,6 +372,10 @@ str(d)
 ----
 
 #### Slicing, subsetting
+
+
+
+Have one example showing error message when attempting to insert different data type in column
 
 #### Scatterplot
         * Make a scatterplot
