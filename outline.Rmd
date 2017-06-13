@@ -156,7 +156,7 @@ One of the most useful features of the RStudio IDE is the ability to run the cod
 Another very helpful feature for increasing your productivity is tab completion. Try typing in the following text and hitting the tab button:
 
 ```{r}
-"C:/
+"C:/"
 ```
 
 Notice that RStudio recognizes your file system.
