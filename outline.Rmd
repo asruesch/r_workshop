@@ -232,11 +232,16 @@ This may not seem like much, but one of the most powerful aspects of R, and what
 
 Let's take 20 minutes to explore mathematical operators, variables, and functions. Try using vectors with other functions, such as the ```mean()``` and ```stdev()``` (standard deviation) functions.
 
-----
 
-#### The ```data.frame```
+## The ```data.frame```
 
-If you are accustomed to using Excel or Access, the data.frame object in R should be very intuitive for you. A data.frame is just a table of data. In a data.frame, each column has a name and number that identify the data in it, and the data within a column is all the same type (e.g., letters cannot be mixed with numbers---more on this later). Before we use data.frames in R, let's look at the table that we'd like to use in R. Open the `data_frame.csv` file in Excel and familiarize yourself with the data.
+If you are accustomed to using Excel or Access, the data.frame object in R should be very intuitive for you. A data.frame is just a table of data. 
+
+In a data.frame, each column has a name and number that identify the data in it, and the data within a column is all the same type. 
+
+Before we use data.frames in R, let's look at the table that we'd like to use. Open the `Vilas_TP_CHL_data.csv` file in Excel (in the /data folder) and familiarize yourself with the data.
+
+---
 
 Now we want to read that data into R. To do this, we will use the `read.csv` function. If you remember, a function does something within the context of the arguments passed to it. The `print` function had only one argument, the message to be printed, but the `read.csv` function has several more. Let's take a look at what those arguments are by introducing a new concept in R---the help menu. To access the help menu for any function, all you have to do is type a question mark followed by the function name into the console. For example:
 
@@ -244,34 +249,44 @@ Now we want to read that data into R. To do this, we will use the `read.csv` fun
 ?read.csv
 ```
 
+---
 
 The help menu for this function should appear in one of the panels in RStudio. You'll notice that the help menu shows the usage of `read.csv` and some similar functions, and a specific section with descriptions of each argument - `read.csv` has quite a few. The syntax with passing arguments to a function is the function name, with parentheses, and within the parentheses all arguments separated by commas. You can see this syntax in the Usage section. You'll notice in the help menu that the first argument is `file`. This tells R where in your file system the table is located, and is required for the function to run. All of the other arguments (`header`,`sep`,etc.), have default values and are thus not required to be entered by the user. Default values are shown in the Usage section with an `=` sign: `read.csv(file,header=TRUE)`, and additional details provided in the Arguments section.
 
-Let's use what we've learned about read.csv to load in a data.frame
+---
+
+Let's use what we've learned about read.csv to load in the data.frame
 
 ```{r}
-
 d = read.csv("data/TP_CHL_models.csv")
 ```
 
+---
 
 Once we have the data.frame read into R and saved as an object, it is often useful to view it, check that the data were read in correctly, check column names, check numbers of rows and columns, etc. Since you don't always have a spreadsheet of the data in front of you while working in R, it's useful to become familiar with interpreting these attributes of your data. We can explore our data.frame in a few ways. 
 
 First, let's introduce a few very useful functions. `str` (meaning "structure") is one you should become very fluent in. For a data.frame, it only requires one argument: the name of your data.frame. Thus, `str(df)` returns a few useful items, the number of observations (rows) and variables (columns), the name of each column, whether each column is numeric, integer, etc. (more on data.types next), and the first several entries of each column.
 
+---
+
 Sometimes, it's easier to just look at the data.frame in table form though. To do that, we can just run `print(df)` or `df` for short. This will print the data.frame in the console, but gets very messy if you have more than a few rows or columns. One way to get around that is to use `head` or `tail` which only show you the top or bottom of your data.frame, but can still be messy if we have many columns. Finally, RStudio has another nice feature that lets us view our data.frame a little more like a spreadsheet - just double-click on the name of your data.frame in the Environment window or use `View(df)`. 
+
+---
 
 If we just want to see the names of the variables, we can use `names` or `colnames`. 
 Finally, we may want some idea of how big our data.frame is. To get the number of rows, use `nrow`. For the number of columns, use `ncol`. 
 
+---
+
 What if we just want to look at a particular column? You may have noticed that the names of each variable in the output of the `str` command are preceded by a `$`. We can use this to reference particular columns by name. Say we have a column named "TP" within a data.frame named "LakeMendota". To access and run functions on just those TP values, we can reference them directly using `LakeMendota$TP`. We'll come back to subsetting data.frames a bit later. 
 
-#### Exercise (10 min)
-Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environment Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`,`head`,`tail`,`names`,`colnames`,`nrow`, and `ncol` functions, and access specific columns with `$`. 
+## Exercise (10 min)
+
+Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environment Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`, `head`, `tail`, `names`, `colnames`, `nrow`, and `ncol` functions, and access specific columns with `$`. 
 
 *Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.csv` is the file---we can just enter the file first 
   
-### Data types
+## Data types
 
 Let's say you are working in Excel, and you want to create a column that contains quantities of money associated with different people.
 
