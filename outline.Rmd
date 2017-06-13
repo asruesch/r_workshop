@@ -18,9 +18,9 @@ output:
 ### Logistics
 
 1) Download the course pack using the following link:
-    * <https://github.com/asruesch/r_workshop/archive/master.zip>
+    * <http://bit.ly/2s7uBzz>
     * Or copy it from one of the available flash drives
-    * Save it to your Desktop and extract the contents the zip file
+    * Save it wherever you'd like and extract the contents the zip file
 2) Ensure RStudio and Excel are installed on your computer
 
 ----
@@ -230,11 +230,7 @@ This may not seem like much, but one of the most powerful aspects of R, and what
 
 Let's take 20 minutes to explore mathematical operators, variables, and functions. Try using vectors with other functions, such as the ```mean()``` and ```stdev()``` (standard deviation) functions.
 
-Now that it's saved, let's add some code to it. We can start by typing in the same line:
-
-```{r}
-print("Talk to me, Goose")
-```
+----
 
 #### The ```data.frame```
 
@@ -406,16 +402,18 @@ Lots of scatterplots, one big pdf
 
 ## Day 2, Using R in your work
 
-<<<<<<< HEAD
-=======
+### Logistics
+
+1) Download the course pack using the following link:
+    * <http://bit.ly/2s7uBzz>
+    * Or copy it from one of the available flash drives
+    * Save it wherever you'd like and extract the contents the zip file
+
 ```{r}
-# At some point on day 2 before my data management section, I presume we will be reading in one of the course datasets. 
-
-#Alex: I think we can actually start using this on day 1. I'll use it in my data.frame section
-
+# We should have a script here that ensures all attendees have the same working directory, variables, etc.
+# Have them run this at the beginning of class
 d = read.csv("data/TP_CHL_models.csv")
 ```
-
 
 #### More detailed plotting
 
@@ -456,7 +454,6 @@ Whoever makes the prettiest plot wins! (By entirely subjective standards, of cou
 
 Play around with creating and customizing prettier plots in R, starting with the data.frames you worked with yesterday. Play with the settings for axes, colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving them. 
 
->>>>>>> 9cdc4022953cc25392fe4de2193c3ef4a2f6dd07
 a.	More detailed plotting (Yellow)
   i. boxplots
   ii. histogram
