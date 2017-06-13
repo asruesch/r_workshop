@@ -273,18 +273,17 @@ Let's say you are working in Excel, and you want to create a column that contain
 
 ![](img/excel_money_example.png)
 
+Then, let's say you want to divide those quantities by two:
 
-For the purposes of printing, you would like to format the quantities with a dollar sign in front of the value, with two significant digits to represent cents
+![](img/excel_money_example_half_function.png)
 
-![](img/excel_money_example_formatted.png)
+If we apply that same function to all cells in that column, we get an error when Excel tries to calculate half of the value "unknown"
 
-Now, let's say you need to populate one of the records with a value of "unknown", so you type in the characters u-n-k-n-o-w-n. Now, when you try to format that column with a dollar sign and two significant digits, Excel returns an error for the field containing the "unknown" value.
+![](img/excel_money_example_half_function_error.png)
 
+This is because Excel does not recognize the "unknown" value as something divisible. The "unknown" value is a different date **type**. The division operator in Excel only recognizes numeric data types and therefore throws in error, and R will do the same with mismatches in data types.
 
-
-This is because Excel does not recognize the "unknown" value when formatting the whole column as currency. The "unknown" value is a different date **type**. The formatting function in Excel only recognizes numeric data types and therefore throws in error, and R will do the same with mismatches in data types.
-
-We are going to talk about 4 main data types in R:
+There are many data types in R, but in this section, we'll introduce 4 important types, numeric, integer, character, and logical.
 
 #### Numbers
 
@@ -341,25 +340,28 @@ class(as.logical(0))
 class(as.logical(1))
 ```
 
-#### Data types and data frames
-
-Data types become more important in data frames. In a data frame, a column can only contain values of a single data type. For example, a column intended to contain numeric data (such as the money column in our Excel table) 
-
 #### Exercise
 
 Take 5 minutes to test different functionality on different data types to see how R behaves (for example, try dividing an integer or multiplying by a character).
 
 ----
 
-###
+#### Data types and data frames
+
+Data types become more important in data frames. In a data frame, a column can only contain values of a single data type. For example, a column intended to contain numeric data (such as the money column in our Excel table), will give us problems if we try to add any non-numeric data. A very helpful function for quickly identifying the types of each column in a data frame is the ```str``` function:
 
 ```{r}
-# At some point on day 2 before my data management section, I presume we will be reading in one of the course datasets. 
-d = read.csv("data/Vilas_TP_CHL_data.csv")
+str(d)
 ```
 
-A data frame has rows and columns. Each column contains data of the same **type**. R has several data types including:
+After each column, the data type is listed (e.g., int = integer, num = numeric)
 
+*Note the column with the "Factor" data type. Factors are slightly more in-depth than the scope of this class. To suppress the factor data type in a data frame, you can use the ```{r} stringsAsFactors=FALSE``` argument to the ```read.csv``` function to coerce the factor columns to character data types:
+
+```{r}
+d = read.csv("data/Vilas_TP_CHL_data.csv", stringsAsFactors=FALSE)
+str(d)
+```
 
 
 We can easily view the data types of a data frame using the ```str``` function:
@@ -368,10 +370,7 @@ We can easily view the data types of a data frame using the ```str``` function:
 str(d)
 ```
 
-
-
-Strings, numbers, integers
-* Each column has a data type show ```str()```--define data types
+----
 
 #### Slicing, subsetting
 
