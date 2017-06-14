@@ -487,7 +487,7 @@ d = read.csv("data/Vilas_TP_CHL_data.csv")
 
 ## More detailed plotting
 
-Yesterday, we showed you how to make simple scatterplots. But, there are numerous other types of plots you can make, infinite ways to customize them, and some techniques for creating publication or web-quality figure. Today, we'll introduce  you to a bit of all of the above. 
+Yesterday, we showed you how to make simple scatterplots. But, there are numerous other types of plots you can make, infinite ways to customize them, and some techniques for creating publication or web-quality figures. Today, we'll introduce  you to a bit of all of the above. 
 
 
 ## Other plot types
@@ -495,7 +495,7 @@ Yesterday, we showed you how to make simple scatterplots. But, there are numerou
 The basic `plot` command is versatile and can take various types of input arguments, but there are other functions. For instance, if you want to make a boxplot, then the `boxplot` command might suit you.  
 
 
-```{r, fig.height=4,fig.width=4}
+```{r, fig.height=3.9,fig.width=4}
 boxplot(d$TP,log="y")
 ```
 
@@ -512,7 +512,7 @@ boxplot(deadpike$TP~deadpike$NAME,log="y",cex.axis=0.7)
 
 ## Other plot types
 
-If you want to make a histogram, `hist` is probably a good option.
+If you want to make a histogram, `hist` will probably work.
 
 ```{r}
 hist(d$TP)
@@ -542,7 +542,7 @@ plot(kentuck$TP,kentuck$CHL)
 
 First, let's say we want to make a scatterplot with an overlayed line that compares our points to an existing model. The general approach in R is to first create your simple plot, and then add features to it. You can add features with a number of functions, including `lines`, `points`, `polygon`, and more. These don't create plots on their own - they add lines, points, or a polygon to a plot that has already been made and is currently active. 
 
-For our example, we'll  use the 2nd data.frame from our project folder, which already has model chlorophyll as a function of TP. The units are log-transform though, so we'll untransform using `exp`.
+For our example, we'll  use the 2nd data.frame from our project folder, which already has modeled chlorophyll as a function of TP. The units are log-transform though, so we'll untransform using `exp`.
 
 ```{r,eval=FALSE}
 plot(kentuck$TP,kentuck$CHL)
@@ -557,7 +557,7 @@ lines(exp(model$logTP),exp(model$fit))
 Great, now you have a multi-layer plot. 'Tis a shame that it's pretty ugly! Let's spruce it up!
 
 ##Customizing plots
-You may have noticed that in `plot` help file, there are a number of arguments, including  `xlab` and `ylab` to name your axes and `main` for the plot title. These arguments require text strings: 
+You may have noticed that in the `plot` help file, there are many arguments, including  `xlab` and `ylab` to name your axes and `main` for the plot title. These arguments require text strings: 
 
 ```{r, fig.height=3}
 plot(kentuck$TP,kentuck$CHL,
@@ -568,10 +568,21 @@ plot(kentuck$TP,kentuck$CHL,
 
 ## Customizing plots
 
-Then, in the help files for `plot`,`lines`, etc., there is something called "Further graphical parameters (see par)...". `par` is essentially a set of default graphical parameters.   Use `?par` to see the numerous options. We won't walk through all of them now, but it is worth exploring these options if you want to fully customize your plots. Many of them can be changed within the `plot` command. 
+Then, in the help files for `plot`, `lines`, etc., there is something called "Further graphical parameters (see par)...". `par` is essentially a set of default  parameters. Use `?par` to see the numerous options. We won't walk through them all  now, but they are worth exploring. Many of them can be changed within the `plot` command. Let's take a look at some common ones
 
-  some table here with log, col, pch, cex, lty, lwd
+## Customizing plots
   
+argument | description                          | example
+-------- | ------------------------------------ | -------
+log      | log-transform axes?                  | log="x"
+col      | symbol color                         | col="blue"
+bg       | background color of a symbol         | bg="skyblue"
+pch      | dot type                             | pch=21
+cex      | text and symbol size (relative to 1) | cex=1.5
+lty      | line type                            | lty=2
+lwd      | line width                           | lwd=3
+las      | axis label direction                 | las=1
+
 ##Customizing plots
 Let's first use the `log` argument to log both axes. 
 
