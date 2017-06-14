@@ -797,25 +797,66 @@ legend("topleft","South Twin Lake",bty="n")
 
 ## Saving plots
 
-Finally, what if we want to save our plot so that it exists outside of our R session? The recommended strategy is to use a graphic devices function, which give you full control over dimensions, resolution, background color, etc. The functions are named pretty intuitively: `pdf`, `png`, `jpeg`, `tiff`, etc. The arguments include: filename, width, height, units, and res. Units can be "px" (default), "in", "cm", or "mm" - for images that I use in powerpoints or documents, I generally use "in", as these are typically easy to fit onto a slide or a page. Then, you can set width and height to typical dimensions (width=6,height=4). "res" defines the dots/pixels per inch for bitmap type images. Generally, 150 is sufficient for presentations, 300 is good for print, but some publications require higher. "filename" is whatever you want to name the file with the appropriate file extension, which will be saved to the working directory, or you can supply the path and filename to save it elsewhere. 
+Finally, what if we want to save our plot outside of R? The recommended strategy is to use a graphic devices function, which give you full control over dimensions, resolution, background color, etc. The functions are named pretty intuitively: `pdf`, `png`, `jpeg`, `tiff`, etc. 
 
-Now that you know what information to give the graphic device function, how does it work in conjunction with your plotting code. When you run a `png` function for instance, nothing seems to happen in RStudio. However, behind the scenes, R opens a new graphical device, onto which all the subsequent lines of code will be run and plotted. At the end of those lines of code, we need to tell R to stop the plotting and save the .png file. We can do this by telling R to shut off the graphical device. We can do that by running `dev.off`. Let's see how all this comes together to create and save a figure...
+Key arguments: `filename`, `width`, `height`, `units`, and `res`
 
- #show example here
+ * `units` can be "px" (default), "in", "cm", or "mm". I generally use "in", as these are typically easy to fit onto a slide or a page. Then, you can set `width` and `height` to desired dimensions (width=6, height=4).
+ * `res` defines the dots/pixels per inch for bitmap type images. Generally, 150 is sufficient for presentations, 300 is good for print, but some publications require higher. 
+ * `filename` is your desired file name and extension 
 
-#### Exercise
+##Saving plots
+
+Example:
+```{r,eval=FALSE}
+png("MyNewFigure.png",
+    units="in",
+    width=6.5, #sized for paper width between margins
+    height=3.5,
+    res=300)
+```
+
+  
+##Saving plots
+
+So how do you get that function to work with your plotting code?
+
+When you run `png`, nothing seems to happen in RStudio. However, behind the scenes, R opens a new graphical device, onto which all the subsequent lines of code will be run and plotted. At the end of those lines of code, we need to tell R to stop the plotting and save the .png file. We can do this by telling R to shut off the graphical device. We can do that by running `dev.off`. Let's see how all this comes together to create and save a figure...
+
+##Saving plots
+
+```{r,eval=FALSE}
+png("MyNewFigure.png",units="in",width=6.5,height=3.5,res=300)
+par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+legend("topleft","Kentuck Lake",bty="n")
+
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+legend("topleft","South Twin Lake",bty="n")
+dev.off()
+```
+
+##Saving plots
+You should now be able to find your saved figure in the project folder. Open it to see what it looks like. Note that the sizing of items may not match the way RStudio showed it to you.  
+
+
+
+## Advanced Plotting Exercise (15 min)
 Whoever makes the prettiest plot wins! (By entirely subjective standards, of course)
 
-Play around with creating and customizing prettier plots in R, starting with the data.frames you worked with yesterday. Play with the settings for axes, colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving them. 
+Play around with creating and customizing prettier plots in R, starting with the data.frames you worked with yesterday. Play with all the settings we demo'd: colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving options. 
 
-a.	More detailed plotting (Yellow)
-  i. boxplots
-  ii. histogram
-  iii. multilayer plots, points with lines, etc.
-  iv. axes, labels, other plotting arguments
-  v. saving plots (png, pdf)
-  vi. exercise
+To go above and beyond, try finding some new plot types or plotting arguments in `par` and see if you can incorporate them! Remember, google is your friend! 
 
+##
 b. Simple Stats (Matt)
   i. Regression
   ii. t-test
