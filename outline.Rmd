@@ -533,7 +533,7 @@ plot(d$TP,d$CHL)
 ## Customizing plots
 
 For simplicity, let's limit it to one lake:
-```{r}
+```{r,fig.height=3.4}
 kentuck = d[d$NAME=="Kentuck Lake - Site 2-East End-Deep Hole",]
 plot(kentuck$TP,kentuck$CHL)
 ```
@@ -590,8 +590,7 @@ Let's first use the `log` argument to log both axes.
 plot(kentuck$TP,kentuck$CHL,
      xlab="Total Phosphorus",
      ylab="Chlorophyll",
-     main="",
-     log="xy") #transforms both axes into log-scale
+     main="",log="xy") #transforms both axes into log-scale
 lines(exp(model$logTP),exp(model$fit))
 ```
 
@@ -602,20 +601,17 @@ Now, let's change the point and line types. A simple way to find what types are 
 plot(kentuck$TP,kentuck$CHL,pch=21,
      xlab="Total Phosphorus",
      ylab="Chlorophyll",
-     main="",
-     log="xy") #transforms both axes into log-scale
+     main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2)
 ```
 
 ## Customizing plots
 Now, add some color. Colors can be pretty intuitive ("black","red", etc.). You can also google image "r colors" to see pre-named colors, or you can provide RGB codes in the form "#RRGGBB", or use existing color palettes and functions (e.g. (rainbow). 
-
 ```{r,fig.height=3.1,eval=FALSE}
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      xlab="Total Phosphorus",
      ylab="Chlorophyll",
-     main="",
-     log="xy") #transforms both axes into log-scale
+     main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
 ```
 
@@ -624,8 +620,7 @@ lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      xlab="Total Phosphorus",
      ylab="Chlorophyll",
-     main="",
-     log="xy") #transforms both axes into log-scale
+     main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
 ```
 
@@ -637,8 +632,7 @@ plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      cex=1.2,
      xlab="Total Phosphorus",
      ylab="Chlorophyll",
-     main="",
-     log="xy") #transforms both axes into log-scale
+     main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 ```
 
@@ -649,18 +643,159 @@ plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      cex=1.2,las=1,
      xlab="Total Phosphorus",
      ylab="Chlorophyll",
-     main="",
-     log="xy") #transforms both axes into log-scale
+     main="",log="xy")
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 ```
 
 
 ## Customizing plots
-Now, let's finally try to get rid of that useless white space at the top of our plot. To do that, we'll introduce some new functionality of `par` settings. 
+Now, let's finally try to get rid of that useless white space at the top of our plot. To do that, we'll introduce a new way to control `par` settings. 
 
-There are some arguments that can only be set in a specific call to the `par` function.  `mar` takes a vector of 4 values, where each is the number of lines of space provided on each side of the plot in the form c(bottom, left, top, right). The default is c(5.1,4.1,4.1,2). So, R is provided 4.1 lines of space above the plot (the 3rd value in that vector). To reduce that to something small, we just reset its value in par: `par(mar=c(5.1,4.1,0.5,2))`. 
+There are some arguments that can only be set in a specific call to the `par` function, instead of within `plot`.  `mar` is an argument thats takes a vector of 4 values, where each is the number of lines of space provided on each side of the plot in the form c(bottom, left, top, right). The default is c(5.1,4.1,4.1,2). So, R is providing 4.1 lines of space above the plot (the 3rd value in that vector). To reduce that to something small, we just reset its value in par: `par(mar=c(5.1,4.1,0.5,2))`. 
 
-One of the things that `par` allows us to do is multi-panel plotting. Perhaps you noticed that each time you ran the `plot` function, the previous plot was overwritten. What if you wanted two plots on the same figure, next to each other. Before creating the first plot, we can use `par` to tell R that we're going to create 2 plots in the figure. There are two `par` arguments that control this: `mfrow` and `mfcol`. I think of the "mf" as "multiple figures" and "col" or "row" to indicate the number of columns or rows, respectively, and how many items in each one. Thus, `par(mfrow=c(3,2))` creates a 6-panel plot with 3 rows of 2 items (columns) each. To make two plots side-by-side, we can use `par(mfrow=c(1,2))`. 
+## Customizing plots
+```{r,fig.height=3.5}
+par(mar=c(4,4,0.25,0.25))
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy") 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+```
+
+## Customizing plots
+One of the things that `par` allows us to do is multi-panel plotting. Perhaps you noticed that each time you ran the `plot` function, the previous plot was overwritten. What if you wanted two plots on the same figure, next to each other? Before creating the first plot, we can use `par` to tell R that we're going to create 2 plots in the figure. There are two `par` arguments that control this: `mfrow` and `mfcol`. I think of the "mf" as "multiple figures" and "col" or "row" to indicate the number of columns or rows, respectively, and how many items in each one. Thus, `par(mfrow=c(3,2))` creates a 6-panel plot with 3 rows of 2 items (columns) each. To make two plots side-by-side, we can use `par(mfrow=c(1,2))`. 
+
+## Customizing plots
+
+```{r,eval=FALSE}
+#first make a data.frame for a different lake to plot in the 2nd panel
+sTwin = d[d$NAME=="South Twin Lake - Deep Hole",]
+
+#set up our plot
+par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3))  #now use oma for outer margins
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy") 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy") 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+```
+
+##Customizing plots
+```{r,echo=FALSE}
+#first make a data.frame for a different lake to plot in the 2nd panel
+sTwin = d[d$NAME=="South Twin Lake - Deep Hole",]
+
+#set up our plot
+par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy") 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy") 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+```
+
+## Customizing plots
+Let's improve this plot by doing 2 things to make it easier to compare between lakes
+
+1. Set the axis limits so that they are equal between the two plots
+2. Add a label identifying each lake
+
+## Customizing plots
+To set the axis limits, we can use the arguments `xlim` and `ylim` in conjunction with the `range` function to find the min and max. 
+
+```{r}
+xlimits = range(c(kentuck$TP,sTwin$TP))
+ylimits = range(c(kentuck$CHL,sTwin$CHL))
+```
+
+## Customizing plots
+```{r,eval=FALSE}
+par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+```
+
+## Customizing plots
+```{r,echo=FALSE}
+par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+```
+
+## Customizing plots
+We could easily add Lake Name labels with the `main` argument in `plot`. However, in this case we'd prefer to have the lake names in the upper left space within the plots.
+
+To do this, we can use the `text` or `legend` function. These work like `lines` in that they plot onto an active graphic. For `text`, you supply the x & y coordinates where the text should go, and the text itself. In this case, we'll use `legend` to take advantage of its use of location keyworks (e.g., "topleft").
+
+```{r,eval=FALSE}
+legend("topleft", #give the location by keyword
+       "Kentuck Lake", #the contents of the legend
+       bty="n") #bty means box type around legend, "n" means none
+```
+
+## Customizing plots
+```{r,eval=FALSE}
+par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+legend("topleft","Kentuck Lake",bty="n")
+
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+legend("topleft","South Twin Lake",bty="n")
+```
+
+## Customizing plots
+```{r,echo=FALSE}
+par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+legend("topleft","Kentuck Lake",bty="n")
+
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,xlab="Total Phosphorus",
+     ylab="Chlorophyll",main="",log="xy",
+     xlim=xlimits,ylim=ylimits) 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+legend("topleft","South Twin Lake",bty="n")
+```
+
+## Saving plots
 
 Finally, what if we want to save our plot so that it exists outside of our R session? The recommended strategy is to use a graphic devices function, which give you full control over dimensions, resolution, background color, etc. The functions are named pretty intuitively: `pdf`, `png`, `jpeg`, `tiff`, etc. The arguments include: filename, width, height, units, and res. Units can be "px" (default), "in", "cm", or "mm" - for images that I use in powerpoints or documents, I generally use "in", as these are typically easy to fit onto a slide or a page. Then, you can set width and height to typical dimensions (width=6,height=4). "res" defines the dots/pixels per inch for bitmap type images. Generally, 150 is sufficient for presentations, 300 is good for print, but some publications require higher. "filename" is whatever you want to name the file with the appropriate file extension, which will be saved to the working directory, or you can supply the path and filename to save it elsewhere. 
 
