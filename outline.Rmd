@@ -157,10 +157,12 @@ Notice that RStudio recognizes certain characters and changes their colors. Alth
 
 One of the most useful features of the RStudio IDE is the ability to run the code in your scripts in your console. With your cursor on the same line as the `print` statement, press `Ctrl+Enter`.
 
+##
+
 Another very helpful feature for increasing your productivity is tab completion. Try typing in the following text and hitting the tab button:
 
-```{r}
-"C:/"
+```{r,eval=FALSE}
+"C:/
 ```
 
 Notice that RStudio recognizes your file system.
@@ -456,16 +458,15 @@ Use your data.frame to play around with making simple scatterplots. Try to integ
 
 If you have time, try creating at least 2 new vectors with the `c` function and plotting those. 
 
-
-4. Exercise
-    - Open the text file but try other arguments
-    - Plot the data using different plot arguments
+Try using some of the different plot arguments, if you have time. We'll come back to those tomorrow.
 
 
-#### For loops
 
 
-# Exercise
+## For loops
+
+
+## Exercise
 
 Lots of scatterplots, one big pdf
 
