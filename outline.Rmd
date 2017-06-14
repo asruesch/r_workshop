@@ -481,7 +481,7 @@ Lots of scatterplots, one big pdf
 ```{r}
 # We should have a script here that ensures all attendees have the same working directory, variables, etc.
 # Have them run this at the beginning of class
-models = read.csv("data/TP_CHL_models.csv")
+model = read.csv("data/TP_CHL_models.csv")
 d = read.csv("data/Vilas_TP_CHL_data.csv")
 ```
 
@@ -532,17 +532,122 @@ plot(d$TP,d$CHL)
 
 ## Customizing plots
 
-First, let's say we want to make a scatterplot with an overlayed line that compares our points to an existing model. The general approach in R is to first create your simple plot, and then add features to it. You can add features with a number of functions, including `lines`, `points`, `polygon`, and more. These don't create plots on their own - they add lines, points, or a polygon to a plot that has already been made and is currently active. To make a scatterplot with an overlayed fit line, we can use the data.frame from our project file. We first create our scatterplot with `plot(df$TP,df$Chl)`. Then, we can use the 2nd data.frame from our project folder, which already has x (TP) and y (Chl) coordinates corresponding to a widely used model, to create a line with `lines(model$TP,model$Chl)`. 
+For simplicity, let's limit it to one lake:
+```{r}
+kentuck = d[d$NAME=="Kentuck Lake - Site 2-East End-Deep Hole",]
+plot(kentuck$TP,kentuck$CHL)
+```
 
-Great, now you have a multi-layer plot. 'Tis a shame that it's pretty ugly! Let's spruce it up. You may have noticed that in the help file for `plot`, there are a number of additional arguments, including things like `xlab` and `ylab` to name your axes and `main` to name the plot title. These arguments that require text strings can be set like so: `plot(x,y,xlab="Date",ylab="TP (mg/L)")`. 
+## Customizing plots
 
-Then, in the help files for `plot`,`lines`, etc., there is something called "Further graphical parameters (see par)...". `par` is essentially a set of default graphical parameters that can be reset, or that can be changed for the current plot within the plot command. Use `?par` to see the numerous options. We won't walk through all of them now, but it is worth exploring these options if you want to fully customize your plots. For now, here is a table with a few of the most commonly used arguments
+First, let's say we want to make a scatterplot with an overlayed line that compares our points to an existing model. The general approach in R is to first create your simple plot, and then add features to it. You can add features with a number of functions, including `lines`, `points`, `polygon`, and more. These don't create plots on their own - they add lines, points, or a polygon to a plot that has already been made and is currently active. 
 
-  some table here with col, pch, cex, lty, lwd
+For our example, we'll  use the 2nd data.frame from our project folder, which already has model chlorophyll as a function of TP. The units are log-transform though, so we'll untransform using `exp`.
+
+```{r,eval=FALSE}
+plot(kentuck$TP,kentuck$CHL)
+lines(exp(model$logTP),exp(model$fit))
+```
+
+## Customizing plots
+```{r, fig.height=3.5,fig.width=7.5}
+plot(kentuck$TP,kentuck$CHL)
+lines(exp(model$logTP),exp(model$fit))
+```
+Great, now you have a multi-layer plot. 'Tis a shame that it's pretty ugly! Let's spruce it up!
+
+##Customizing plots
+You may have noticed that in `plot` help file, there are a number of arguments, including  `xlab` and `ylab` to name your axes and `main` for the plot title. These arguments require text strings: 
+
+```{r, fig.height=3}
+plot(kentuck$TP,kentuck$CHL,
+     xlab="Total Phosphorus",
+     ylab="Chlorophyll",
+     main="") #this makes sure that the title is left blank
+```
+
+## Customizing plots
+
+Then, in the help files for `plot`,`lines`, etc., there is something called "Further graphical parameters (see par)...". `par` is essentially a set of default graphical parameters.   Use `?par` to see the numerous options. We won't walk through all of them now, but it is worth exploring these options if you want to fully customize your plots. Many of them can be changed within the `plot` command. 
+
+  some table here with log, col, pch, cex, lty, lwd
   
-Each of the arguments can be set within a call to a plotting command (e.g., `plot(x,y,col="black",cex=1.5,pch=21)). Generally, a simple way to find what line or point types are available, and their corresponding codes, is to google it (or google image): "r pch" or "r lty". Colors can be pretty intuitive ("black","red", etc.). You can also google image "r colors" to see a bunch of other pre-named colors you can access, or you can provide RGB codes in the form "#RRGGBB", or use existing color palettes and functions (e.g. (rainbow). 
+##Customizing plots
+Let's first use the `log` argument to log both axes. 
 
-There are some arguments that can only be set in a specific call to the par function. Say we don't want a title, and we want to eliminate the space above the plot where the title would be. To do that, we need to remove the space that R creates above the plot by default, and we can do that with a `par` argument called `mar`. `mar` takes a vector of 4 values, where each is the number of lines of space provided on each side of the plot in the form c(bottom, left, top, right). The default is c(5.1,4.1,4.1,2). So, R is provided 4.1 lines of space above the plot (the 3rd value in that vector). To reduce that to something small, we just reset its value in par: `par(mar=c(5.1,4.1,0.5,2))`. 
+```{r,fig.height=3.1}
+plot(kentuck$TP,kentuck$CHL,
+     xlab="Total Phosphorus",
+     ylab="Chlorophyll",
+     main="",
+     log="xy") #transforms both axes into log-scale
+lines(exp(model$logTP),exp(model$fit))
+```
+
+## Customizing plots
+Now, let's change the point and line types. A simple way to find what types are available is to google "r pch" or "r lty".
+
+```{r,fig.height=3.1}
+plot(kentuck$TP,kentuck$CHL,pch=21,
+     xlab="Total Phosphorus",
+     ylab="Chlorophyll",
+     main="",
+     log="xy") #transforms both axes into log-scale
+lines(exp(model$logTP),exp(model$fit),lty=2)
+```
+
+## Customizing plots
+Now, add some color. Colors can be pretty intuitive ("black","red", etc.). You can also google image "r colors" to see pre-named colors, or you can provide RGB codes in the form "#RRGGBB", or use existing color palettes and functions (e.g. (rainbow). 
+
+```{r,fig.height=3.1,eval=FALSE}
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     xlab="Total Phosphorus",
+     ylab="Chlorophyll",
+     main="",
+     log="xy") #transforms both axes into log-scale
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
+```
+
+##Customizing plots
+```{r,fig.height=3.7}
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     xlab="Total Phosphorus",
+     ylab="Chlorophyll",
+     main="",
+     log="xy") #transforms both axes into log-scale
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
+```
+
+
+## Customizing plots
+Now, let's increase the dot size and line thickness
+```{r,fig.height=3.1}
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,
+     xlab="Total Phosphorus",
+     ylab="Chlorophyll",
+     main="",
+     log="xy") #transforms both axes into log-scale
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+```
+
+## Customizing plots
+Change the orientation of the axis-tick labels (so they all read left-to-right)
+```{r,fig.height=3.1}
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     cex=1.2,las=1,
+     xlab="Total Phosphorus",
+     ylab="Chlorophyll",
+     main="",
+     log="xy") #transforms both axes into log-scale
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+```
+
+
+## Customizing plots
+Now, let's finally try to get rid of that useless white space at the top of our plot. To do that, we'll introduce some new functionality of `par` settings. 
+
+There are some arguments that can only be set in a specific call to the `par` function.  `mar` takes a vector of 4 values, where each is the number of lines of space provided on each side of the plot in the form c(bottom, left, top, right). The default is c(5.1,4.1,4.1,2). So, R is provided 4.1 lines of space above the plot (the 3rd value in that vector). To reduce that to something small, we just reset its value in par: `par(mar=c(5.1,4.1,0.5,2))`. 
 
 One of the things that `par` allows us to do is multi-panel plotting. Perhaps you noticed that each time you ran the `plot` function, the previous plot was overwritten. What if you wanted two plots on the same figure, next to each other. Before creating the first plot, we can use `par` to tell R that we're going to create 2 plots in the figure. There are two `par` arguments that control this: `mfrow` and `mfcol`. I think of the "mf" as "multiple figures" and "col" or "row" to indicate the number of columns or rows, respectively, and how many items in each one. Thus, `par(mfrow=c(3,2))` creates a 6-panel plot with 3 rows of 2 items (columns) each. To make two plots side-by-side, we can use `par(mfrow=c(1,2))`. 
 
