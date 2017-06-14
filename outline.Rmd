@@ -442,7 +442,7 @@ str(d)
 
 We'll come back to making figures tomorrow, but by this point in the workshop, you've earned the right to see what the data look like outside of a data.frame. The key building block in making graphics is the `plot` function. This is a highly versatile function - it can take lots of different data and object types as inputs. The default usage is to just give it x and y coordinates in the form `plot(x,y)`, and it will output a scatterplot. In RStudio, this will show up in its own panel. The `x` and `y` arguments can be single values, vectors of values, or columns from a data.frame.   
 
-```{r,eval="FALSE"}
+```{r,eval=FALSE}
 plot(d$TP,d$CHL)
 ```
 
@@ -451,8 +451,10 @@ plot(d$TP,d$CHL)
 plot(d$TP,d$CHL)
 ```
 
-## Scatterplot Exercise (10 min)
+## Scatterplot Exercise (5 min)
 Use your data.frame to play around with making simple scatterplots. Try to integrate some of your knowledge of data subsetting to remake the plot for different lakes. 
+
+If you have time, try creating at least 2 new vectors with the `c` function and plotting those. 
 
 
 4. Exercise
@@ -483,19 +485,52 @@ models = read.csv("data/TP_CHL_models.csv")
 d = read.csv("data/Vilas_TP_CHL_data.csv")
 ```
 
-#### More detailed plotting
+## More detailed plotting
 
 Yesterday, we showed you how to make simple scatterplots. But, there are numerous other types of plots you can make, infinite ways to customize them, and some techniques for creating publication or web-quality figure. Today, we'll introduce  you to a bit of all of the above. 
 
-#####Other plot types
 
-The basic `plot` command is versatile and can take various types of input arguments, but there are other functions. For instance, if you want to make a boxplot, then the `boxplot` command might suit you. If you want to make a histogram, `hist` is probably a good option. Let's try these.
+## Other plot types
 
-boxplot of something in the dataframe
+The basic `plot` command is versatile and can take various types of input arguments, but there are other functions. For instance, if you want to make a boxplot, then the `boxplot` command might suit you.  
 
-hist of something in the dataframe
 
-These and many other functions exist, and they're not too hard to find. Just google them (e.g., "R histogram"). Feel free to try to find other plot types that you can make in R on your own. For now though, let's go back to our basic scatterplot and learn how to customize it (aka, add complexity and make it pretty). 
+```{r, fig.height=4,fig.width=4}
+boxplot(d$TP,log="y")
+```
+
+## Other plot types
+
+Or using formula notation...
+
+```{r, fig.height=3.5,fig.width=8.8}
+#subset lakes to those w/ "Dead Pike" in name:
+deadpike = d[grepl("Dead Pike",d$NAME),] 
+deadpike$NAME = factor(deadpike$NAME) #reset factors
+boxplot(deadpike$TP~deadpike$NAME,log="y",cex.axis=0.7)
+```
+
+## Other plot types
+
+If you want to make a histogram, `hist` is probably a good option.
+
+```{r}
+hist(d$TP)
+```
+
+## Other plot types
+
+These and many other functions exist, and they're not too hard to find. Just google them (e.g., "R histogram"). Feel free to try to find other plot types that you can make in R on your own. 
+
+## Customizing plots
+
+For now though, let's go back to our basic scatterplot and learn how to customize it (aka, add complexity and make it pretty). 
+
+```{r}
+plot(d$TP,d$CHL)
+```
+
+## Customizing plots
 
 First, let's say we want to make a scatterplot with an overlayed line that compares our points to an existing model. The general approach in R is to first create your simple plot, and then add features to it. You can add features with a number of functions, including `lines`, `points`, `polygon`, and more. These don't create plots on their own - they add lines, points, or a polygon to a plot that has already been made and is currently active. To make a scatterplot with an overlayed fit line, we can use the data.frame from our project file. We first create our scatterplot with `plot(df$TP,df$Chl)`. Then, we can use the 2nd data.frame from our project folder, which already has x (TP) and y (Chl) coordinates corresponding to a widely used model, to create a line with `lines(model$TP,model$Chl)`. 
 
