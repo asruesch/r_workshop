@@ -857,8 +857,7 @@ Play around with creating and customizing prettier plots in R, starting with the
 
 To go above and beyond, try finding some new plot types or plotting arguments in `par` and see if you can incorporate them! Remember, google is your friend! 
 
-##
-b. Simple Stats (Matt)
+## Simple Stats 
   i. Regression
   ii. t-test
   iii. Two-way ANOVA
