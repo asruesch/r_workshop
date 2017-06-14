@@ -233,7 +233,7 @@ This may not seem like much, but one of the most powerful aspects of R, and what
 Let's take 20 minutes to explore mathematical operators, variables, and functions. Try using vectors with other functions, such as the ```mean()``` and ```stdev()``` (standard deviation) functions.
 
 
-## The ```data.frame```
+## The `data.frame`
 
 If you are accustomed to using Excel or Access, the data.frame object in R should be very intuitive for you. A data.frame is just a table of data. 
 
@@ -241,50 +241,89 @@ In a data.frame, each column has a name and number that identify the data in it,
 
 Before we use data.frames in R, let's look at the table that we'd like to use. Open the `Vilas_TP_CHL_data.csv` file in Excel (in the /data folder) and familiarize yourself with the data.
 
----
+## The `data.frame`
 
-Now we want to read that data into R. To do this, we will use the `read.csv` function. If you remember, a function does something within the context of the arguments passed to it. The `print` function had only one argument, the message to be printed, but the `read.csv` function has several more. Let's take a look at what those arguments are by introducing a new concept in R---the help menu. To access the help menu for any function, all you have to do is type a question mark followed by the function name into the console. For example:
+Now we want to read that data into R. To do this, we will use the `read.csv` function. If you remember, a function does something within the context of the arguments passed to it. The `print` function had only one argument, the message to be printed, but the `read.csv` function has several more. Let's take a look at what those arguments are using the help menu.
 
 ```{r eval=FALSE}
 ?read.csv
 ```
 
----
+## The `data.frame`
 
-The help menu for this function should appear in one of the panels in RStudio. You'll notice that the help menu shows the usage of `read.csv` and some similar functions, and a specific section with descriptions of each argument - `read.csv` has quite a few. The syntax with passing arguments to a function is the function name, with parentheses, and within the parentheses all arguments separated by commas. You can see this syntax in the Usage section. You'll notice in the help menu that the first argument is `file`. This tells R where in your file system the table is located, and is required for the function to run. All of the other arguments (`header`,`sep`,etc.), have default values and are thus not required to be entered by the user. Default values are shown in the Usage section with an `=` sign: `read.csv(file,header=TRUE)`, and additional details provided in the Arguments section.
+You'll notice that the help menu shows the usage of `read.csv` and some similar functions, and a specific section with descriptions of each argument - `read.csv` has quite a few. 
 
----
+Let's look at the Usage section. You'll notice in the help menu that the first argument passed to `read.csv` is `file`. This tells R where in your file system the table is located, and is required for the function to run. All of the other arguments (`header`,`sep`,etc.) have default values and are thus not required to be entered by the user. Default values are shown in the Usage section with an `=` sign: `read.csv(file,header=TRUE)`. Remember, you can always find more informatin about each argument by scrolling down to the Arguments section, or googling!
+
+## The `data.frame`
 
 Let's use what we've learned about read.csv to load in the data.frame
 
 ```{r}
-d = read.csv("data/TP_CHL_models.csv")
+d = read.csv("data/Vilas_TP_CHL_data.csv")
 ```
 
----
+Notice how we give the file name and its location within the *data* folder? Because we are using an RStudio project, our `working directory` is the folder associated with the project - in this case, it is the *r_workshop* folder. So, our file path starting with "data/" tells R to look for a folder called *data* within *r_workshop*
 
-Once we have the data.frame read into R and saved as an object, it is often useful to view it, check that the data were read in correctly, check column names, check numbers of rows and columns, etc. Since you don't always have a spreadsheet of the data in front of you while working in R, it's useful to become familiar with interpreting these attributes of your data. We can explore our data.frame in a few ways. 
+## The `data.frame`
 
-First, let's introduce a few very useful functions. `str` (meaning "structure") is one you should become very fluent in. For a data.frame, it only requires one argument: the name of your data.frame. Thus, `str(df)` returns a few useful items, the number of observations (rows) and variables (columns), the name of each column, whether each column is numeric, integer, etc. (more on data.types next), and the first several entries of each column.
+Once we have the data.frame read into R and saved as an object, we'll want to view it, check that the data were read in correctly, check column names, check numbers of rows and columns, etc. Since you don't always have a spreadsheet of the data in front of you, it's useful to become familiar with interpreting these attributes of your data. We can explore our data.frame in a few ways. 
 
----
+First, let's introduce a few useful functions. `str` (meaning "structure") is one you should become fluent in. For a data.frame, it only requires one argument: the name of your data.frame. Let's see the structure of our data.frame:
 
-Sometimes, it's easier to just look at the data.frame in table form though. To do that, we can just run `print(df)` or `df` for short. This will print the data.frame in the console, but gets very messy if you have more than a few rows or columns. One way to get around that is to use `head` or `tail` which only show you the top or bottom of your data.frame, but can still be messy if we have many columns. Finally, RStudio has another nice feature that lets us view our data.frame a little more like a spreadsheet - just double-click on the name of your data.frame in the Environment window or use `View(df)`. 
+```{r,eval=FALSE}
+str(d)
+```
 
----
+## The `data.frame`
 
-If we just want to see the names of the variables, we can use `names` or `colnames`. 
-Finally, we may want some idea of how big our data.frame is. To get the number of rows, use `nrow`. For the number of columns, use `ncol`. 
+```{r}
+str(d)
+```
+There are a few useful outputs: the number of observations (rows) and variables (columns), the name of each column, whether each column is numeric, integer, etc. (more on data.types next), and the first several entries of each column. 
 
----
+## The `data.frame`
 
-What if we just want to look at a particular column? You may have noticed that the names of each variable in the output of the `str` command are preceded by a `$`. We can use this to reference particular columns by name. Say we have a column named "TP" within a data.frame named "LakeMendota". To access and run functions on just those TP values, we can reference them directly using `LakeMendota$TP`. We'll come back to subsetting data.frames a bit later. 
+Sometimes, it's easier to just look at the data.frame in table form though. To do that, we can just run `print(d)` or `d` for short. This will print the data.frame in the console, but gets messy if you have more than a few rows or columns. 
 
-## Exercise (10 min)
+One way to get around that is to use `head` or `tail` which only show you the top or bottom of your data.frame, but can still be messy if we have many columns. 
+```{r}
+head(d)
+```
 
-Try running `read.csv` using your `filename` variable, and saving the data to a new variable. To verify that it read correctly, either use the `print` function, or click on your new variable in the *Environment Panel*. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`, `head`, `tail`, `names`, `colnames`, `nrow`, and `ncol` functions, and access specific columns with `$`. 
+## The `data.frame`
 
-*Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator. For example, the first argument to `read.csv` is the file---we can just enter the file first 
+Finally, RStudio has another nice feature that lets us view our data.frame a little more like a spreadsheet - just double-click on the name of your data.frame in the Environment window or use `View(df)`. 
+
+![](img/View_data.frame.png)
+
+## The `data.frame`
+
+If we just want to see the names of the variables, we can use `names` or `colnames`.
+
+```{r}
+colnames(d)
+```
+
+Finally, we may want some idea of how big our data.frame is. To get the number of rows, use `nrow`. For the number of columns, use `ncol`.
+
+```{r}
+nrow(d)
+```
+
+## The `data.frame`
+
+What if we just want to look at a particular column? You may have noticed that the names of each variable in the output of the `str` command were preceded by a `$`. We can use this to reference particular columns by name. Say we just want to look at the lake names in our dataset. We know that column is called "NAME". To access it, we use: 
+
+```{r}
+d$NAME
+```
+
+## `data.frame` exercise (5 min)
+
+If you haven't already, run `read.csv` using your `filename` variable, and saving the data to a new variable. Try it with the other .csv files we've provided as well. To verify that they read correctly, view the data.frame by printing it or clicking on the name in the *Environment* panel. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`, `head`, `tail`, `names`, `colnames`, `nrow`, and `ncol` functions, and access specific columns with `$`. 
+
+*Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set by with an equals (`=`) operator (e.g., "argument=___". For example, the first argument to `read.csv` is the file---we can just enter the file first 
   
 ## Data types
 
@@ -393,14 +432,26 @@ str(d)
 
 #### Slicing, subsetting
 
-#### Scatterplot
-        * Make a scatterplot
+## Scatterplots
         
-A HUGE benefit of using R is its ability to produce customizable, complex, and downright pretty visualizations of data. A drawback of a 2-day workshop is that we can't quite teach you all of that. We can teach you the basics, which act as building blocks toward higher-level graphics. 
+* A HUGE benefit of R is its ability to produce customizable, complex, and downright pretty visualizations of data. A drawback of a 2-day workshop is that we can't quite teach you all of that. 
+
+* We can teach you the basics, which act as building blocks toward higher-level graphics. 
+
+## Scatterplots
 
 We'll come back to making figures tomorrow, but by this point in the workshop, you've earned the right to see what the data look like outside of a data.frame. The key building block in making graphics is the `plot` function. This is a highly versatile function - it can take lots of different data and object types as inputs. The default usage is to just give it x and y coordinates in the form `plot(x,y)`, and it will output a scatterplot. In RStudio, this will show up in its own panel. The `x` and `y` arguments can be single values, vectors of values, or columns from a data.frame.   
-        
-#### Exercise (10 min)
+
+```{r,eval="FALSE"}
+plot(d$TP,d$CHL)
+```
+
+## Scatterplots
+```{r}
+plot(d$TP,d$CHL)
+```
+
+## Scatterplot Exercise (10 min)
 Use your data.frame to play around with making simple scatterplots. Try to integrate some of your knowledge of data subsetting to remake the plot for different lakes. 
 
 
@@ -428,7 +479,8 @@ Lots of scatterplots, one big pdf
 ```{r}
 # We should have a script here that ensures all attendees have the same working directory, variables, etc.
 # Have them run this at the beginning of class
-d = read.csv("data/TP_CHL_models.csv")
+models = read.csv("data/TP_CHL_models.csv")
+d = read.csv("data/Vilas_TP_CHL_data.csv")
 ```
 
 #### More detailed plotting
