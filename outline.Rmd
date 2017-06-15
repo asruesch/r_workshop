@@ -5,6 +5,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   ioslides_presentation:
     incremental: true
+    logo: img/dnr_logo_square.png
 ---
 
 # Computer Programming for DNR Water Quality Professionals
