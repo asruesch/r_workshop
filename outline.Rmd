@@ -867,8 +867,7 @@ You should now be able to find your saved figure in the project folder. Open it 
 ![](img/fig_in_folder.png)
 
 
-
-## Advanced Plotting Exercise (15 min)
+# Exercise (15 min)
 Whoever makes the prettiest plot wins! (By entirely subjective standards, of course)
 
 Play around with creating and customizing prettier plots in R, starting with the data.frames you worked with yesterday. Play with all the settings we demo'd: colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving options. 
