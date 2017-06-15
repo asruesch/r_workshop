@@ -331,11 +331,11 @@ What if we just want to look at a particular column? You may have noticed that t
 d$NAME
 ```
 
-## `data.frame` exercise (5 min)
+# Exercise (5 min) {.smaller}
 
-If you haven't already, run `read.csv` using your `filename` variable, and saving the data to a new variable. Try it with the other .csv files we've provided as well. To verify that they read correctly, view the data.frame by printing it or clicking on the name in the *Environment* panel. Try reading subsets of the table by using the `nrows` and `skip` arguments. Explore your data.frame using `str`, `head`, `tail`, `names`, `colnames`, `nrow`, and `ncol` functions, and access specific columns with `$`. 
+Run `read.csv` to load and name the TP & CHL data.frame. Try it with the other .csv files we've provided as well. Try using the `nrows` and `skip` arguments to read subsets of data. Verify data by viewing them, or using `str`, `head`, `tail`, `names`, `colnames`, `nrow`, and `ncol` functions. Access specific columns with `$`. 
 
-*Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set by with an equals (`=`) operator (e.g., "argument=___". For example, the first argument to `read.csv` is the file---we can just enter the file first 
+*Hint:* The arguments should be listed in the same order as they are in the help menu, unless they are specifically set with an equals (`=`) operator (e.g., "argument=___"). For example, the first argument to `read.csv` is the file---we can just enter the file first. 
   
 ## Data types
 
@@ -463,8 +463,8 @@ plot(d$TP,d$CHL)
 plot(d$TP,d$CHL)
 ```
 
-## Scatterplot Exercise (5 min)
-Use your data.frame to play around with making simple scatterplots. Try to integrate some of your knowledge of data subsetting to remake the plot for different lakes. 
+# Exercise (5 min)
+Use your data.frame to play around with making simple scatterplots. Try to use subsetting to remake the plot for different lakes. 
 
 If you have time, try creating at least 2 new vectors with the `c` function and plotting those. 
 
