@@ -461,11 +461,17 @@ If you have time, try creating at least 2 new vectors with the `c` function and 
 
 Try using some of the different plot arguments, if you have time. We'll come back to those tomorrow.
 
-
-
-
 ## For loops
+Much of our work at DNR involves running the same general set of analytical steps on many units (e.g., monitoring stations, water bodies, permits, etc.). This can get a bit tedious, and is prone to error. Do you ever find yourself wondering, "If only I could program my computer to run these steps on all my sites, and then spend my time evaluating the results..."
 
+With `for` loops in R, you can!
+
+Let's start simple:
+```{r}
+for(i in c(1,2,3,4,5)) {
+  print(i)
+}
+```
 
 ## Exercise
 
