@@ -564,24 +564,31 @@ For our example, we'll  use the 2nd data.frame from our project folder, which al
 
 ```{r,eval=FALSE}
 plot(kentuck$TP,kentuck$CHL)
+### <b>
 lines(exp(model$logTP),exp(model$fit))
+### </b>
 ```
 
-## Customizing plots
-```{r, fig.height=3.5,fig.width=7.5}
+## Customizing plots {.smaller}
+```{r, fig.height=3.3,fig.width=7.5,tidy=TRUE}
 plot(kentuck$TP,kentuck$CHL)
+  ### <b>
 lines(exp(model$logTP),exp(model$fit))
+  ### </b>
 ```
-Great, now you have a multi-layer plot. 'Tis a shame that it's pretty ugly! Let's spruce it up!
+
+Great, now you have 2 layers! 'Tis a shame that it's pretty ugly! Let's spruce it up!
 
 ##Customizing plots
 You may have noticed that in the `plot` help file, there are many arguments, including  `xlab` and `ylab` to name your axes and `main` for the plot title. These arguments require text strings: 
 
 ```{r, fig.height=3}
 plot(kentuck$TP,kentuck$CHL,
+     ### <b>
      xlab="Total Phosphorus",
      ylab="Chlorophyll",
      main="") #this makes sure that the title is left blank
+### </b>
 ```
 
 ## Customizing plots
@@ -604,11 +611,12 @@ las      | axis label direction                 | las=1
 ##Customizing plots
 Let's first use the `log` argument to log both axes. 
 
-```{r,fig.height=3.1}
+```{r,fig.height=3.3}
 plot(kentuck$TP,kentuck$CHL,
-     xlab="Total Phosphorus",
-     ylab="Chlorophyll",
-     main="",log="xy") #transforms both axes into log-scale
+     ### <b>
+     log="xy", #transforms both axes into log-scale
+     ### </b>
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="") 
 lines(exp(model$logTP),exp(model$fit))
 ```
 
@@ -616,30 +624,42 @@ lines(exp(model$logTP),exp(model$fit))
 Now, let's change the point and line types. A simple way to find what types are available is to google "r pch" or "r lty".
 
 ```{r,fig.height=3.1}
-plot(kentuck$TP,kentuck$CHL,pch=21,
-     xlab="Total Phosphorus",
-     ylab="Chlorophyll",
-     main="",log="xy") 
-lines(exp(model$logTP),exp(model$fit),lty=2)
+plot(kentuck$TP,kentuck$CHL,log="xy",
+     ### <b>
+     pch=21,
+     ### </b>
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="") 
+lines(exp(model$logTP),exp(model$fit),
+      ### <b>
+      lty=2)
+### </b>
 ```
 
 ## Customizing plots
 Now, add some color. Colors can be pretty intuitive ("black","red", etc.). You can also google image "r colors" to see pre-named colors, or you can provide RGB codes in the form "#RRGGBB", or use existing color palettes and functions (e.g. (rainbow). 
 ```{r,fig.height=3.1,eval=FALSE}
-plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
-     xlab="Total Phosphorus",
-     ylab="Chlorophyll",
-     main="",log="xy") 
-lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
+plot(kentuck$TP,kentuck$CHL,log="xy",pch=21,
+     ### <b>
+     col="seagreen",bg="seagreen1",
+     ### </b>
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="") 
+lines(exp(model$logTP),exp(model$fit),lty=2,
+      ### <b>
+      col="seagreen4")
+### </b>
 ```
 
 ##Customizing plots
 ```{r,fig.height=3.7}
-plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
-     xlab="Total Phosphorus",
-     ylab="Chlorophyll",
-     main="",log="xy") 
-lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
+plot(kentuck$TP,kentuck$CHL,log="xy",pch=21,
+     ### <b>
+     col="seagreen",bg="seagreen1",
+     ### </b>
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="") 
+lines(exp(model$logTP),exp(model$fit),lty=2,
+      ### <b>
+      col="seagreen4")
+### </b>
 ```
 
 
@@ -647,21 +667,24 @@ lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4")
 Now, let's increase the dot size and line thickness
 ```{r,fig.height=3.1}
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
+     ### <b>
      cex=1.2,
-     xlab="Total Phosphorus",
-     ylab="Chlorophyll",
-     main="",log="xy") 
-lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+     ### </b>
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy") 
+lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",
+      ### <b>
+      lwd=2)
+### </b>
 ```
 
-## Customizing plots
+## Customizing plots {.smaller}
 Change the orientation of the axis-tick labels (so they all read left-to-right)
-```{r,fig.height=3.1}
-plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
-     cex=1.2,las=1,
-     xlab="Total Phosphorus",
-     ylab="Chlorophyll",
-     main="",log="xy")
+```{r,fig.height=3.5}
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",cex=1.2,
+     ### <b>
+     las=1,
+     ### </b>
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy")
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 ```
 
@@ -673,7 +696,9 @@ There are some arguments that can only be set in a specific call to the `par` fu
 
 ## Customizing plots
 ```{r,fig.height=3.5}
+### <b>
 par(mar=c(4,4,0.25,0.25))
+### </b>
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      cex=1.2,las=1,xlab="Total Phosphorus",
      ylab="Chlorophyll",main="",log="xy") 
@@ -690,7 +715,11 @@ One of the things that `par` allows us to do is multi-panel plotting. Perhaps yo
 sTwin = d[d$NAME=="South Twin Lake - Deep Hole",]
 
 #set up our plot
-par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3))  #now use oma for outer margins
+
+par(mar=c(4,4,.3,.3)
+  ### <b>
+  mfrow=c(1,2))
+### </b>
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      cex=1.2,las=1,xlab="Total Phosphorus",
      ylab="Chlorophyll",main="",log="xy") 
@@ -708,7 +737,7 @@ lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 sTwin = d[d$NAME=="South Twin Lake - Deep Hole",]
 
 #set up our plot
-par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+par(mfrow=c(1,2),mar=c(4,4,.3,.3)) 
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      cex=1.2,las=1,xlab="Total Phosphorus",
      ylab="Chlorophyll",main="",log="xy") 
@@ -734,25 +763,27 @@ xlimits = range(c(kentuck$TP,sTwin$TP))
 ylimits = range(c(kentuck$CHL,sTwin$CHL))
 ```
 
-## Customizing plots
+## Customizing plots {.smaller}
 ```{r,eval=FALSE}
-par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
-plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
-     cex=1.2,las=1,xlab="Total Phosphorus",
-     ylab="Chlorophyll",main="",log="xy",
-     xlim=xlimits,ylim=ylimits) 
+par(mfrow=c(1,2),mar=c(4,4,.3,.3))  
+plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",cex=1.2,
+     ### <b> 
+     xlim=xlimits,ylim=ylimits,
+     ### </b>
+     las=1,xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 
-plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
-     cex=1.2,las=1,xlab="Total Phosphorus",
-     ylab="Chlorophyll",main="",log="xy",
-     xlim=xlimits,ylim=ylimits) 
+plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",cex=1.2,
+     ### <b>
+     xlim=xlimits,ylim=ylimits,
+     ### </b>
+     las=1,xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 ```
 
 ## Customizing plots
 ```{r,echo=FALSE}
-par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+par(mfrow=c(1,2),mar=c(4,4,.3,.3)) 
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
      cex=1.2,las=1,xlab="Total Phosphorus",
      ylab="Chlorophyll",main="",log="xy",
@@ -779,20 +810,22 @@ legend("topleft", #give the location by keyword
 
 ## Customizing plots
 ```{r,eval=FALSE}
-par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+par(mfrow=c(1,2),mar=c(4,4,.3,.3)) 
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
-     cex=1.2,las=1,xlab="Total Phosphorus",
-     ylab="Chlorophyll",main="",log="xy",
-     xlim=xlimits,ylim=ylimits) 
+     cex=1.2,las=1,xlim=xlimits,ylim=ylimits,
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy",) 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+### <b>
 legend("topleft","Kentuck Lake",bty="n")
+### </b>
 
 plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
-     cex=1.2,las=1,xlab="Total Phosphorus",
-     ylab="Chlorophyll",main="",log="xy",
-     xlim=xlimits,ylim=ylimits) 
+     cex=1.2,las=1,xlim=xlimits,ylim=ylimits,
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
+### <b>
 legend("topleft","South Twin Lake",bty="n")
+### </b>
 ```
 
 ## Customizing plots
@@ -844,22 +877,24 @@ When you run `png`, nothing seems to happen in RStudio. However, behind the scen
 ##Saving plots
 
 ```{r,eval=FALSE}
+### <b>
 png("MyNewFigure.png",units="in",width=6.5,height=3.5,res=300)
-par(oma=c(0,0,0.25,0),mfrow=c(1,2),mar=c(4,4,.2,.3)) 
+### </b>
+par(mfrow=c(1,2),mar=c(4,4,.3,.3)) 
 plot(kentuck$TP,kentuck$CHL,pch=21,col="seagreen",bg="seagreen1",
-     cex=1.2,las=1,xlab="Total Phosphorus",
-     ylab="Chlorophyll",main="",log="xy",
-     xlim=xlimits,ylim=ylimits) 
+     cex=1.2,las=1,xlim=xlimits,ylim=ylimits,
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy",) 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 legend("topleft","Kentuck Lake",bty="n")
 
 plot(sTwin$TP,sTwin$CHL,pch=21,col="seagreen",bg="seagreen1",
-     cex=1.2,las=1,xlab="Total Phosphorus",
-     ylab="Chlorophyll",main="",log="xy",
-     xlim=xlimits,ylim=ylimits) 
+     cex=1.2,las=1,xlim=xlimits,ylim=ylimits,
+     xlab="Total Phosphorus",ylab="Chlorophyll",main="",log="xy") 
 lines(exp(model$logTP),exp(model$fit),lty=2,col="seagreen4",lwd=2)
 legend("topleft","South Twin Lake",bty="n")
+### <b>
 dev.off()
+### </b>
 ```
 
 ##Saving plots
@@ -868,14 +903,14 @@ You should now be able to find your saved figure in the project folder. Open it 
 ![](img/fig_in_folder.png)
 
 
-# Exercise (15 min)
-Whoever makes the prettiest plot wins! (By entirely subjective standards, of course)
+# Exercise (15 min) {.smaller}
+Play around with creating and customizing prettier plots in R. Try all the settings we demo'd: colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving options. 
 
-Play around with creating and customizing prettier plots in R, starting with the data.frames you worked with yesterday. Play with all the settings we demo'd: colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving options. 
-
-To go above and beyond, try finding some new plot types or plotting arguments in `par` and see if you can incorporate them! Remember, google is your friend! 
+To go above and beyond, try out some new plot types or plotting arguments in `par`! Remember, google is your friend! 
 
 If there's something you want to change but can't seem to figure out how, let us know! There's always a way!
+
+Whoever makes the prettiest plot wins! (By entirely subjective standards, of course)
 
 ## Simple Stats 
   i. Regression
