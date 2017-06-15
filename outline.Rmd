@@ -49,12 +49,20 @@ If so, it's likely you could benefit in some way by learning a programming langu
 
 This slideshow brought to you by R!
 
+
+![](img/rmd to slides.png)
+
+
 ## GIS 
 
 ```{r fig.width=8, fig.height=4,tidy=TRUE,warning=FALSE}
 library(leaflet)
 leaflet() %>%
-  addProviderTiles("Esri.WorldPhysical")
+  addProviderTiles("Esri.WorldPhysical",
+                   options=providerTileOptions(maxZoom=20))
+#note - my version of leaflet runs into an error when zooming in:
+#https://github.com/PaulLeCam/react-leaflet/issues/296
+#might work with diff version or workaround
 ```
 
 
