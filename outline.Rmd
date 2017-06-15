@@ -51,10 +51,10 @@ This slideshow brought to you by R!
 
 ## GIS 
 
-```{r fig.width=8, fig.height=4}
+```{r fig.width=8, fig.height=4,tidy=TRUE,warning=FALSE}
 library(leaflet)
 leaflet() %>%
-  addTiles()
+  addProviderTiles("Esri.WorldPhysical")
 ```
 
 
@@ -472,7 +472,7 @@ Try using some of the different plot arguments, if you have time. We'll come bac
 Lots of scatterplots, one big pdf
 
 # Computer Programming for DNR Water Quality Professionals
-###Day 2, Using R in your work
+####Day 2: the nitty gritty, so you can use R in your work!
 
 ## Logistics
 
@@ -824,7 +824,7 @@ png("MyNewFigure.png",
 
 So how do you get that function to work with your plotting code?
 
-When you run `png`, nothing seems to happen in RStudio. However, behind the scenes, R opens a new graphical device, onto which all the subsequent lines of code will be run and plotted. At the end of those lines of code, we need to tell R to stop the plotting and save the .png file. We can do this by telling R to shut off the graphical device. We can do that by running `dev.off`. Let's see how all this comes together to create and save a figure...
+When you run `png`, nothing seems to happen in RStudio. However, behind the scenes, R opens a new graphical device, onto which all the subsequent lines of code will be run and plotted. At the end of those lines of code, we need to tell R to stop the plotting and save the .png file. We can do this by telling R to shut off the graphical device. We do that by running `dev.off`. Let's see how all this comes together to create and save a figure...
 
 ##Saving plots
 
@@ -860,6 +860,8 @@ Whoever makes the prettiest plot wins! (By entirely subjective standards, of cou
 Play around with creating and customizing prettier plots in R, starting with the data.frames you worked with yesterday. Play with all the settings we demo'd: colors, point and line types, point sizes and line widths, margin sizes, multipanel plots, and saving options. 
 
 To go above and beyond, try finding some new plot types or plotting arguments in `par` and see if you can incorporate them! Remember, google is your friend! 
+
+If there's something you want to change but can't seem to figure out how, let us know! There's always a way!
 
 ## Simple Stats 
   i. Regression
