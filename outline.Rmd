@@ -471,10 +471,13 @@ If you have time, try creating at least 2 new vectors with the `c` function and 
 Try using some of the different plot arguments, if you have time. We'll come back to those tomorrow.
 
 ## For loops
-Much of our work at DNR involves running the same general set of analytical steps on many units (e.g., monitoring stations, water bodies, permits, etc.). This can get a bit tedious, and is prone to error. Do you ever find yourself wondering, "If only I could program my computer to run these steps on all my sites, and then spend my time evaluating the results..."
+Much of our work at DNR involves running the same general set of analytical steps on many units (e.g., monitoring stations, water bodies, permits, etc.). This can get a bit tedious, and is prone to error. Do you ever find yourself wondering, "If only I could program my computer to run these steps on all my sites, and then spend my time evaluating the results..."?
 
 With `for` loops in R, you can!
 
+A `for` loop automates a process by applying the same step(s) to one or more items. Related terms include "batch process" and "iterate".
+
+## For loops
 Let's start simple:
 ```{r}
 for(i in c(1,2,3,4,5)) {
@@ -482,9 +485,49 @@ for(i in c(1,2,3,4,5)) {
 }
 ```
 
-## Exercise
+# Exercise
 
-Lots of scatterplots, one big pdf
+## For loops
+Email from Dan Helsel to Matt Diebel regarding Dead Pike Lake clarity trends: 
+
+I saw Dr. Carpenter’s comment about “similar to trends I have seen in a lot of Northern Wisconsin lakes. Transparency increases after the 2006 drought, and decreases back toward historical values after 2012 or 2013.”  So I started messing with the vilas and iron county secchi disk readings to see if I could “verify” his statement. ...I’m wondering if there’s an easy way to select some lakes in those counties to see if we have similar trends. My adolescent ability to function within excel got me to the point of trying to graph seasonal trends on 50+ lakes (see sheet #2) – Aaaargh. Any suggestions or ideas?
+
+## For loops
+Prepare data
+```{r,eval=FALSE}
+data = read.csv("data/Vilas_County_Secchi_1995-2017.csv", as.is=TRUE)
+data$Date = as.Date(data$Date, format="%m/%d/%Y")
+data$Year = as.numeric(format(data$Date, "%Y"))
+stations = aggregate(data$Date, 
+  by=list(data$StationID,data$StationName), 
+  FUN=length)
+colnames(stations) = c("ID","NAME","COUNT")
+stations = stations[stations$COUNT>=6,]
+stations = stations[order(stations$NAME),]
+xlims = c(min(data$Date), max(data$Date))
+xgrid = as.Date(paste(c(399:403*5),"-01-01",sep=""))
+```
+
+## For loops
+Put all plots into a single pdf
+```{r,eval=FALSE}
+pdf("plots/Vilas_County_Secchi_1995-2017_plots.pdf", 
+  width=8.5, height=11)
+par(mfrow=c(3,2), oma=c(2,2,2,2))
+for (s in 1:nrow(stations)) {
+  sdata = data[data$StationID==stations$ID[s],]
+  if(length(unique(sdata$Year))<10) {next}
+  plot(Secchi~Date, sdata, type="n", 
+    xlab="", ylab="Secchi Depth (ft)", 
+    ylim=c(max(sdata$Secchi),0), xlim=xlims,
+    main=paste(stations$ID[s]," - ",stations$NAME[s], sep=""), 
+    cex.main=0.9)
+  abline(h=c(0:10*5), v=xgrid, col="lightgray")
+  points(Secchi~Date, sdata)
+  box()
+}
+dev.off()
+```
 
 # Computer Programming for DNR Water Quality Professionals
 ####Day 2: the nitty gritty, so you can use R in your work!
