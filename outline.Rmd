@@ -1,13 +1,14 @@
 ---
-title: 'Introduction to R: Computer Programming for DNR Water Quality Professionals, Day 1'
-authors:
-- "Aaron Ruesch"
-- "Matt Diebel"
-- "Alex Latzka"
+title: 'wdnR: Introduction to R'
+author: Aaron Ruesch, Matt Diebel, and Alex Latzka
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   ioslides_presentation:
     incremental: true
 ---
+
+# Computer Programming for DNR Water Quality Professionals
+###Day 1, the 'why' and 'how'
 
 ## Logistics
 
@@ -59,7 +60,7 @@ leaflet() %>%
 
 # Tour of RStudio
 
-
+## Tour of RStudio
 R comes in lots of different flavors, but the way that we will be using R for this class is through a software package called RStudio. RStudio packages many of the things you need to be a productive programmer all in place. RStudio can help beginner programmers learn quickly, but it also has enough functionality to satisfy the advanced programmer as well. To start, let's get a feel for the RStudio interface.
 
 
@@ -470,9 +471,10 @@ Try using some of the different plot arguments, if you have time. We'll come bac
 
 Lots of scatterplots, one big pdf
 
-## Day 2, Using R in your work
+# Computer Programming for DNR Water Quality Professionals
+###Day 2, Using R in your work
 
-### Logistics
+## Logistics
 
 1) Download the course pack using the following link:
     * <http://bit.ly/2s7uBzz>
@@ -847,6 +849,8 @@ dev.off()
 
 ##Saving plots
 You should now be able to find your saved figure in the project folder. Open it to see what it looks like. Note that the sizing of items may not match the way RStudio showed it to you.  
+
+![](img/fig_in_folder.png)
 
 
 
