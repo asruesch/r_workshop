@@ -4,19 +4,18 @@ author: Aaron Ruesch, Matt Diebel, and Alex Latzka
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   ioslides_presentation:
-    incremental: true
     logo: img/dnr_logo_square.png
 ---
 
 # Computer Programming for DNR Water Quality Professionals
-###Day 1, the 'why' and 'how'
+### Day 1, the 'why' and 'how'
 
 ## Logistics
 
 1) Download the course pack using the following link:
     * <http://bit.ly/2s7uBzz>
     * Or copy it from one of the available flash drives
-    * Save it wherever you'd like and extract the contents the zip file
+    * Save it wherever you'd like and extract the contents of the zip file
 2) Ensure RStudio and Excel are installed on your computer
 
 ## The plan for today
@@ -32,17 +31,29 @@ output:
 
 If so, it's likely you could benefit in some way by learning a programming language.
 
-## Using a computer without programming skills is like: {.smaller}
+## Using a computer without programming skills is like:
 
-* advocating for water quality without understanding the science: you may be able to change the behavior of a few people with your persuasion alone, but you will be much more effective if you can properly communicate the implications of poor water quality, its causes, and the opportunities for restoration.
-* making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a year's worth of pesto in 10 minutes and the result will be much more consistent.
-* making cake with a wheat seed and a baby chicken: rather than beginning from raw materials every time, it would be more effective to first raise many egg-producing chickens, replicate your wheat seed into a field of seed-yielding plants, and build a tool for processing seeds into flour. 
+...advocating for water quality without understanding the science: you may be able to change the behavior of a few people with your persuasion alone, but you will be much more effective if you can properly communicate the implications of poor water quality, its causes, and the opportunities for restoration.
+
+## Using a computer without programming skills is like:
+
+...making pesto with a knife instead of a food processor: most of the time you're cutting each pine nut one at a time, and occasionally you can get a few all at once. With a food processor, it may take longer to set up, but once it's ready you can make a year's worth of pesto in 10 minutes and the result will be much more consistent.
+
+## Using a computer without programming skills is like:
+
+...making cake with a wheat seed and a baby chicken: rather than beginning from raw materials every time, it would be more effective to first raise many egg-producing chickens, replicate your wheat seed into a field of seed-yielding plants, and build a tool for processing seeds into flour. 
 
 ## What is so special about the R language?
 
-* R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity "The Popularity of Data Science Software"), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
-* R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
-* R is free
+R will soon be the language preferred by most scientists. [Measured by Google Scholar hits](http://r4stats.com/articles/popularity "The Popularity of Data Science Software"), R recently surpassed SAS, and will soon surpass SPSS which has been trending precipitously downward for the last 7 years.
+
+## What is so special about the R language?
+
+R is extremely extensible. It was originally designed to be used solely for data analysis and graphics. However, the scope of its use has increased dramatically to include automation, interactivity with other languages, application and web development, GIS, database management, and much more. The key is the involvement of a large (and growing) user base that contributes to the project.
+
+## What is so special about the R language?
+
+R is free
 
 # R can do all sorts of amazing things
 
@@ -50,42 +61,43 @@ If so, it's likely you could benefit in some way by learning a programming langu
 
 This slideshow brought to you by R!
 
-
 ![](img/rmd to slides.png)
-
 
 ## GIS 
 
-```{r fig.width=8, fig.height=4,tidy=TRUE,warning=FALSE}
+```{r echo=FALSE}
 library(leaflet)
-leaflet() %>%
-  addProviderTiles("Esri.WorldPhysical",
-                   options=providerTileOptions(maxZoom=20))
-#note - my version of leaflet runs into an error when zooming in:
-#https://github.com/PaulLeCam/react-leaflet/issues/296
-#might work with diff version or workaround
 ```
 
+```{r fig.width=8, fig.height=3.5, warning=FALSE}
+leaflet() %>%
+  addTiles() %>%
+  setView(lat=43.075069, lng=-89.384355, zoom=12)
+```
 
 # Tour of RStudio
 
 ## Tour of RStudio
+
 R comes in lots of different flavors, but the way that we will be using R for this class is through a software package called RStudio. RStudio packages many of the things you need to be a productive programmer all in place. RStudio can help beginner programmers learn quickly, but it also has enough functionality to satisfy the advanced programmer as well. To start, let's get a feel for the RStudio interface.
 
+## Tour of RStudio
 
 First, open RStudio software by clicking on the Windows Start button and typing "rstudio":
 
 ![](img/rstudio_screenshot.png)
 
-----
+## Tour of RStudio
 
 There are a number of windows in R, but we are going to start by using only one, the R **console**:
 
 ![](img/r_console.png)
 
-----
+## Tour of RStudio
 
 The R console allows you to type in R code interactively, line-by-line, and print the result. RStudio has many fancy functions, of which we will discuss in more detail as we go along, but basic R software (as opposed to RStudio) is essentially just the console, so you can mentally equate the R program with the mental image of the R console. It's a commmand prompt (```>```, the place where you type in code), plain and simple.
+
+## Tour of RStudio
 
 Let's try writing our first line of code. One of the most basic elements of any computer programming language is simple math. Try typing in 2+2 at the command prompt, and hit enter:
 
@@ -93,25 +105,37 @@ Let's try writing our first line of code. One of the most basic elements of any 
 2+2
 ```
 
+## Tour of RStudio
+
 Notice that the R console returns the result of that mathematical statement. There is a little bracketed ```[1]``` next to the result--all that means is that first item is list directly to the right--we will come back to this later, but for now you can ignore it.
 
-### Exercise
+# Exercise
 
 Let's take 5 minutes to try out different mathemeatical statements. Try using different mathematical operators such as addition/subtraction (```+```, ```-```), multiplication/division ( ```*```, ```/```), and exponents (```^```), and parentheses.
 
-----
+# Basic R Syntax
 
-### Variables
+*[**sin**-taks]*
 
-When we type in a mathematical statement in the R console and press enter, it returns the results as a message printed on the screen. As an alternative to having the result returned as a message, we can also save the result to be used later. We do this by **assigning** the result to a **variable**. To tell R to assign a value to a variable, We will use the equals sign (```=```):
+the rules/form of a computer programming language (e.g., characters, symbols, whitespace)
+
+## Variables
+
+When we type in a mathematical statement in the R console and press enter, it returns the results as a message printed on the screen. As an alternative to having the result returned as a message, we can also save the result to be used later. We do this by **assigning** the result to a **variable**.
+
+## Variables
+
+To tell R to assign a value to a variable, We will use the equals sign (```=```):
 
 ```{r}
 my_1st_variable = 5
 ```
 
-Note that wa
+## Variables
 
 We can name the variable anything we want. Here I named it ```my_1st_variable```, but I could just as well have named it ```theodore_roosevelt```, the only rules being that it cannot contain a space, special characters, or start with a number.
+
+## Variables
 
 Think of a variable as a **container** that you can put anything into--you can also take things out or modify the contents, which is why they are called "variables". Once the contents are stored, we can re-use them as though they have the same value as the contents themselves:
 
@@ -120,9 +144,13 @@ Think of a variable as a **container** that you can put anything into--you can a
 my_1st_variable + 5
 ```
 
+## Variables
+
 As you create more and more variables, RStudio has a helpful tool for you to keep track of them. There is a tab called "Environment" in the upper-right panel that lists all of your variables for you.
 
 ![](./img/rstudio_environment_tab.png)
+
+## Variables
 
 In the same way we write mathematical equations, variables take on the value of the right-hand side of the equation. For example:
 
@@ -133,41 +161,53 @@ x + 2
 
 So what is the value of x?
 
+## Variables
+
 *Note: we can use either an equals sign (```=```) or an arrow (```<-```)--which is just the less-than sign followed by a hyphen--to assign a variable. If you want to bring the purist trolls out of the woodwork, ask Google which one you should use. If you want to keep it simple, just pick one and stick with it. In other words, it really doesn't matter which one you use, just be aware of both when reading others' code*
 
-*** Exercise
+# Exercise
 
 Take 5 minutes to try out variable assignment using mathematical operators. Try re-using variables in mathematical statements.
 
-----
-
-### scripts
+# Scripts
 
 You've probably begun to notice that it is tedious to write every statement of code, line-by-line, one-at-a-time, at the command prompt in the R console. Fortunately, you will not have to do this any longer. Enter the **script**.
 
 A script contains many lines of code that can be executed simultaneously. It is a file stored on your hard drive, much like a .docx or .xlsx file, except it has a .r extension instead. 
 
+# Scripts
+
 RStudio has a feature that makes it very easy to create a script. In the file menu, click new file, and then click R script. A new blank pane should appear:
 
 ![](img/rstudio_script_pane.png)
 
-We are going to save this file on our hard drive, but first, a little house cleaning. We've set up an RStudio **project** for you, which is simply a way of containing many useful elements relating to a project in one place. In the file menu, click Open Project, navigate to the place you stored the course pack, and select the file called "r_workshop.Rproj". Doing so will set up our R session to work out of our course pack folder. You can verify this by clicking the Files tab in the lower-right pane:
+# Scripts
+
+We are going to save this file on our hard drive, but first, a little house cleaning. We've set up an RStudio **project** for you, which is simply a way of containing many useful elements relating to a project in one place. In the file menu, click Open Project, navigate to the place you stored the course pack, and select the file called "r_workshop.Rproj". Doing so will set up our R session to work out of our course pack folder. 
+
+# Scripts
+
+You can verify this by clicking the Files tab in the lower-right pane:
 
 ![](img/rstudio_files_tab.png)
 
 A window like the one above should appear with files associated with our class.
 
+# Scripts
+
 Now, let's save our R script. Click the save button on our R script pane:
 
 ![](img/save_button.png)
 
-
+# Scripts
 
 Notice that RStudio recognizes certain characters and changes their colors. Although you are ultimately writing to a simple text file, because its file extension is ".r", RStudio recognizes that it contains R code, and then helps you visualize it through color. This is one helpful feature of an Integrated Development Environment, or IDE.
 
+# Scripts
+
 One of the most useful features of the RStudio IDE is the ability to run the code in your scripts in your console. With your cursor on the same line as the `print` statement, press `Ctrl+Enter`.
 
-##
+# Scripts
 
 Another very helpful feature for increasing your productivity is tab completion. Try typing in the following text and hitting the tab button:
 
@@ -177,14 +217,11 @@ Another very helpful feature for increasing your productivity is tab completion.
 
 Notice that RStudio recognizes your file system.
 
-#### Exercise (5 minutes)
+# Exercise
 
 See if you can use tab completion to find the folder containing the course pack.
 
-
----
-
-### Functions
+## Functions
 
 In the above two statements, we had to deduce the value of x:
 
@@ -193,36 +230,51 @@ x = 2 + 2
 x + 2
 ```
 
+## Functions
+
 It is obvious that the value is 4 because of the simplicity of the statement, but our code is going to get more complex very quickly, so let's introduce a method for telling R to return the value of a variable. We are going to use a **function** called ```print```
 
 ```{r}
 print(x)
 ```
 
+## Functions
+
 An R function *does something*. It is an action statement. Functions are the **verbs** of computer programming. In the case of the above ```print``` function, its action is to print the value of ```x``` as a message to the user. 
+
+## Functions
 
 The way we use functions in R is by typing their name followed by parentheses (without a space in between). The contents of the parentheses are called the **arguments**. Arguments are how we tell the function what to do. If "jump" were a function, the argument would by "how high?".
 
-A simple function in R that you will likely use a lot is the ```sum``` function.
+## Functions
 
+A simple function in R that you will likely use a lot is the ```sum``` function.
 
 ```{r}
 sum(8, 3, 1)
 ```
 
+## Functions
+
 The arguments of the above ```sum``` function are the values we want to add together. We seperate arguments of a function by inserting a comma between each.
 
 Each function in R has its own set of arguments. That is, our metaphorical argument "how high?" for our "jump" function would not make sense for a "dance" function.
 
+## Functions
+
 So how do we know what arguments to use for each function? We can use R help for that. There are two ways to access help for R functions. The first is to use the RStudios help tab in the lower-left pane:
 
 ![](img/rstudio_help_tab.png)
+
+## Functions
 
 Or, we can simply type a question mark followed by the function name in our console:
 
 ```{r eval=FALSE}
 ?print
 ```
+
+## Functions
 
 A core function in R that you will become very familiar with is the ```c()``` function. The ```c()``` function allows you to create a vector of values. A vector is a sequence of values:
 
@@ -231,6 +283,8 @@ y = c(3,5,7)
 print(y)
 ```
 
+## Functions
+
 In R, you can do math **across** vectors:
 
 ```{r}
@@ -238,12 +292,13 @@ z = y * 2
 print(z)
 ```
 
+## Functions
+
 This may not seem like much, but one of the most powerful aspects of R, and what sets it apart from many other computer programming languages is its ability to do math across sequences of numbers--it is what we refer to as an "array-based language".
 
-### Exercise
+# Exercise
 
 Let's take 20 minutes to explore mathematical operators, variables, and functions. Try using vectors with other functions, such as the ```mean()``` and ```stdev()``` (standard deviation) functions.
-
 
 ## The `data.frame`
 
